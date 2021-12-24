@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		92AA47EC2775F1C900E0914F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA47EB2775F1C900E0914F /* AppDelegate.swift */; };
 		92AA47EE2775F1C900E0914F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA47ED2775F1C900E0914F /* SceneDelegate.swift */; };
-		92AA47F02775F1C900E0914F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA47EF2775F1C900E0914F /* ViewController.swift */; };
 		92AA47F32775F1C900E0914F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92AA47F12775F1C900E0914F /* Main.storyboard */; };
 		92AA47F62775F1C900E0914F /* Wallpaper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92AA47F42775F1C900E0914F /* Wallpaper.xcdatamodeld */; };
 		92AA47F82775F1CB00E0914F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92AA47F72775F1CB00E0914F /* Assets.xcassets */; };
 		92AA47FB2775F1CB00E0914F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92AA47F92775F1CB00E0914F /* LaunchScreen.storyboard */; };
+		92AA48052775FE7F00E0914F /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48042775FE7F00E0914F /* MainScreenViewController.swift */; };
+		92AA48082775FF5200E0914F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48072775FF5200E0914F /* ContainerViewController.swift */; };
+		92AA480A2775FF5A00E0914F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48092775FF5A00E0914F /* MenuViewController.swift */; };
+		92AA480E2776032B00E0914F /* MainScreenViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA480D2776032B00E0914F /* MainScreenViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		92AA47E82775F1C900E0914F /* Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92AA47EB2775F1C900E0914F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92AA47ED2775F1C900E0914F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		92AA47EF2775F1C900E0914F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		92AA47F22775F1C900E0914F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92AA47F52775F1C900E0914F /* Wallpaper.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wallpaper.xcdatamodel; sourceTree = "<group>"; };
 		92AA47F72775F1CB00E0914F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92AA47FA2775F1CB00E0914F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92AA47FC2775F1CB00E0914F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92AA48042775FE7F00E0914F /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		92AA48072775FF5200E0914F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		92AA48092775FF5A00E0914F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		92AA480D2776032B00E0914F /* MainScreenViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +64,9 @@
 		92AA47EA2775F1C900E0914F /* Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				92AA48022775FE4900E0914F /* Presentation  */,
 				92AA47EB2775F1C900E0914F /* AppDelegate.swift */,
 				92AA47ED2775F1C900E0914F /* SceneDelegate.swift */,
-				92AA47EF2775F1C900E0914F /* ViewController.swift */,
 				92AA47F12775F1C900E0914F /* Main.storyboard */,
 				92AA47F72775F1CB00E0914F /* Assets.xcassets */,
 				92AA47F92775F1CB00E0914F /* LaunchScreen.storyboard */,
@@ -68,6 +74,33 @@
 				92AA47F42775F1C900E0914F /* Wallpaper.xcdatamodeld */,
 			);
 			path = Wallpaper;
+			sourceTree = "<group>";
+		};
+		92AA48022775FE4900E0914F /* Presentation  */ = {
+			isa = PBXGroup;
+			children = (
+				92AA48062775FF3F00E0914F /* Menu Presentation  */,
+				92AA48032775FE5500E0914F /* Main Screen Presentation  */,
+			);
+			path = "Presentation ";
+			sourceTree = "<group>";
+		};
+		92AA48032775FE5500E0914F /* Main Screen Presentation  */ = {
+			isa = PBXGroup;
+			children = (
+				92AA480D2776032B00E0914F /* MainScreenViewControllerDelegate.swift */,
+				92AA48042775FE7F00E0914F /* MainScreenViewController.swift */,
+			);
+			path = "Main Screen Presentation ";
+			sourceTree = "<group>";
+		};
+		92AA48062775FF3F00E0914F /* Menu Presentation  */ = {
+			isa = PBXGroup;
+			children = (
+				92AA48072775FF5200E0914F /* ContainerViewController.swift */,
+				92AA48092775FF5A00E0914F /* MenuViewController.swift */,
+			);
+			path = "Menu Presentation ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92AA47F02775F1C900E0914F /* ViewController.swift in Sources */,
+				92AA48052775FE7F00E0914F /* MainScreenViewController.swift in Sources */,
+				92AA480A2775FF5A00E0914F /* MenuViewController.swift in Sources */,
 				92AA47EC2775F1C900E0914F /* AppDelegate.swift in Sources */,
+				92AA48082775FF5200E0914F /* ContainerViewController.swift in Sources */,
 				92AA47F62775F1C900E0914F /* Wallpaper.xcdatamodeld in Sources */,
 				92AA47EE2775F1C900E0914F /* SceneDelegate.swift in Sources */,
+				92AA480E2776032B00E0914F /* MainScreenViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
