@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol MainScreenViewControllerDelegate: AnyObject {
+    func toggleMenu()
+}
+
 class MainScreenViewController: UIViewController {
     
-    var delegate: MainScreenViewControllerDelegate?
+    weak var delegate: MainScreenViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
