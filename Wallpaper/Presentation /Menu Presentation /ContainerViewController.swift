@@ -42,7 +42,7 @@ class ContainerViewController: UIViewController {
     }
 }
 
-// MARK: MainScreenViewControllerDelegate
+// MARK: - MainScreenViewControllerDelegate
 extension ContainerViewController: MainScreenViewControllerDelegate {
     func toggleMenu() {
         switch menuState {
@@ -70,7 +70,7 @@ extension ContainerViewController: MainScreenViewControllerDelegate {
 }
 
 
-// MARK: MenuViewControllerDelegate
+// MARK: - MenuViewControllerDelegate
 extension ContainerViewController: MenuViewControllerDelegate {
     func didSelect(menuItem: MenuViewController.MenuOptions) {
         toggleMenu()
