@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,17 +29,13 @@
                                     <action selector="menuButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JdJ-yy-Ld9"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VPa-Ah-adR">
-                                <rect key="frame" x="85" y="56" width="219" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgY-wg-Qkm">
-                                <rect key="frame" x="312" y="58" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgY-wg-Qkm">
+                                <rect key="frame" x="322" y="55" width="52" height="37"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="19"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="searchButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x94-6G-giB"/>
                                 </connections>
@@ -47,26 +44,95 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qgY-wg-Qkm" secondAttribute="trailing" constant="16" id="MuQ-FV-yDq"/>
                             <constraint firstItem="abO-dk-4lr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cO3-fp-oA2"/>
                             <constraint firstItem="abO-dk-4lr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="eLV-dc-Bc3"/>
+                            <constraint firstItem="qgY-wg-Qkm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="wJb-iv-MnC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iuA-T4-qQ7"/>
-                    <connections>
-                        <outlet property="textField" destination="VPa-Ah-adR" id="GEo-bh-XCa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="33.846153846153847" y="83.886255924170612"/>
         </scene>
+        <!--Searching View Controller-->
+        <scene sceneID="B3z-um-Zan">
+            <objects>
+                <viewController restorationIdentifier="SearchingViewController" storyboardIdentifier="SearchingViewController" id="ZXx-rU-SO9" customClass="SearchingViewController" customModule="Wallpaper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uEo-ZG-Cwr">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbb-PI-9gW">
+                                <rect key="frame" x="16" y="44" width="358" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cki-LG-yXN">
+                                        <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="38"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title="">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="ZXx-rU-SO9" eventType="touchUpInside" id="gGQ-M9-r6y"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Поиск" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PWe-JU-lAf">
+                                        <rect key="frame" x="8" y="46" width="341" height="34"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.22002551020408162" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <imageReference key="background" image="magnifyingglass" catalog="system" symbolScale="small"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Поиск" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yec-0g-LWy">
+                                        <rect key="frame" x="149" y="8" width="61" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="cki-LG-yXN" firstAttribute="top" secondItem="rbb-PI-9gW" secondAttribute="top" id="9ti-SM-9xe"/>
+                                    <constraint firstAttribute="trailing" secondItem="yec-0g-LWy" secondAttribute="trailing" constant="148" id="cjK-cW-Qs2"/>
+                                    <constraint firstItem="cki-LG-yXN" firstAttribute="leading" secondItem="rbb-PI-9gW" secondAttribute="leading" id="rcR-lc-fYg"/>
+                                    <constraint firstItem="PWe-JU-lAf" firstAttribute="top" secondItem="cki-LG-yXN" secondAttribute="bottom" constant="8" symbolic="YES" id="tT2-Rs-l2y"/>
+                                    <constraint firstItem="PWe-JU-lAf" firstAttribute="leading" secondItem="cki-LG-yXN" secondAttribute="leading" constant="8" id="uAX-OI-9kW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fYu-ky-Qro"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fYu-ky-Qro" firstAttribute="trailing" secondItem="rbb-PI-9gW" secondAttribute="trailing" constant="16" id="Msn-FH-E0x"/>
+                            <constraint firstItem="fYu-ky-Qro" firstAttribute="bottom" secondItem="rbb-PI-9gW" secondAttribute="bottom" constant="676" id="Na9-2h-2a6"/>
+                            <constraint firstItem="fYu-ky-Qro" firstAttribute="trailing" secondItem="PWe-JU-lAf" secondAttribute="trailing" constant="25" id="W74-ws-KfB"/>
+                            <constraint firstItem="yec-0g-LWy" firstAttribute="top" secondItem="fYu-ky-Qro" secondAttribute="top" constant="8" id="aFV-Mx-t6R"/>
+                            <constraint firstItem="rbb-PI-9gW" firstAttribute="leading" secondItem="fYu-ky-Qro" secondAttribute="leading" constant="16" id="syV-Yx-qdw"/>
+                            <constraint firstItem="rbb-PI-9gW" firstAttribute="top" secondItem="fYu-ky-Qro" secondAttribute="top" id="txO-ER-7gl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchingTextField" destination="PWe-JU-lAf" id="C26-3x-oWd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cuu-wb-nGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813.84615384615381" y="83.886255924170612"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="js8-FF-zq6">
             <objects>
                 <navigationController navigationBarHidden="YES" id="3gY-Cj-9NO" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sqT-va-ukC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Elb-9I-Lla">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vH9-qM-KF1"/>
                     </connections>
@@ -77,7 +143,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

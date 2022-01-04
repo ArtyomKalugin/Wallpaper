@@ -49,7 +49,7 @@ extension ContainerViewController: MainScreenViewControllerDelegate {
         case .closed:
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8 , initialSpringVelocity: 0, options: .curveEaseInOut) {
                 
-                self.mainScreenViewController.view.frame.origin.x = self.mainScreenViewController .view.frame.width - 120
+                self.mainScreenViewController.view.frame.origin.x = self.mainScreenViewController .view.frame.width - 90
             } completion: { [weak self] done in
                 if done {
                     self?.menuState = .opened

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873727847EC600E24FD2 /* WallpaperImage .swift */; };
+		92A7873B27847FE900E24FD2 /* CodableConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873A27847FE900E24FD2 /* CodableConverter.swift */; };
 		92AA47EC2775F1C900E0914F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA47EB2775F1C900E0914F /* AppDelegate.swift */; };
 		92AA47EE2775F1C900E0914F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA47ED2775F1C900E0914F /* SceneDelegate.swift */; };
 		92AA47F32775F1C900E0914F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92AA47F12775F1C900E0914F /* Main.storyboard */; };
@@ -16,12 +18,15 @@
 		92AA48052775FE7F00E0914F /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48042775FE7F00E0914F /* MainScreenViewController.swift */; };
 		92AA48082775FF5200E0914F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48072775FF5200E0914F /* ContainerViewController.swift */; };
 		92AA480A2775FF5A00E0914F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48092775FF5A00E0914F /* MenuViewController.swift */; };
+		92DC158B2781B8CC00D8D24F /* SearchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DC158A2781B8CC00D8D24F /* SearchingViewController.swift */; };
 		92E3B237277F09B900A8D11F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3B236277F09B900A8D11F /* NetworkService.swift */; };
 		92E3B23A277F1E1400A8D11F /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3B239277F1E1300A8D11F /* Codable.swift */; };
 		92E3B23D277F23C200A8D11F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92E3B23C277F23C200A8D11F /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92A7873727847EC600E24FD2 /* WallpaperImage .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WallpaperImage .swift"; sourceTree = "<group>"; };
+		92A7873A27847FE900E24FD2 /* CodableConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableConverter.swift; sourceTree = "<group>"; };
 		92AA47E82775F1C900E0914F /* Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92AA47EB2775F1C900E0914F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92AA47ED2775F1C900E0914F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +38,7 @@
 		92AA48042775FE7F00E0914F /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		92AA48072775FF5200E0914F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		92AA48092775FF5A00E0914F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		92DC158A2781B8CC00D8D24F /* SearchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingViewController.swift; sourceTree = "<group>"; };
 		92E3B236277F09B900A8D11F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		92E3B239277F1E1300A8D11F /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92A7873927847FC200E24FD2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				92A7873A27847FE900E24FD2 /* CodableConverter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		92AA47DF2775F1C900E0914F = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +82,7 @@
 		92AA47EA2775F1C900E0914F /* Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				92A7873927847FC200E24FD2 /* Helpers */,
 				92E3B238277F1E0300A8D11F /* Models */,
 				92E3B234277F099C00A8D11F /* Services */,
 				92AA48022775FE4900E0914F /* Presentation  */,
@@ -85,6 +100,7 @@
 		92AA48022775FE4900E0914F /* Presentation  */ = {
 			isa = PBXGroup;
 			children = (
+				92DC15892781B8A800D8D24F /* Searching Presentation  */,
 				92AA48062775FF3F00E0914F /* Menu Presentation  */,
 				92AA48032775FE5500E0914F /* Main Screen Presentation  */,
 			);
@@ -108,6 +124,14 @@
 			path = "Menu Presentation ";
 			sourceTree = "<group>";
 		};
+		92DC15892781B8A800D8D24F /* Searching Presentation  */ = {
+			isa = PBXGroup;
+			children = (
+				92DC158A2781B8CC00D8D24F /* SearchingViewController.swift */,
+			);
+			path = "Searching Presentation ";
+			sourceTree = "<group>";
+		};
 		92E3B234277F099C00A8D11F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				92E3B239277F1E1300A8D11F /* Codable.swift */,
+				92A7873727847EC600E24FD2 /* WallpaperImage .swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,9 +235,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				92AA48052775FE7F00E0914F /* MainScreenViewController.swift in Sources */,
+				92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */,
 				92AA480A2775FF5A00E0914F /* MenuViewController.swift in Sources */,
 				92E3B23A277F1E1400A8D11F /* Codable.swift in Sources */,
+				92DC158B2781B8CC00D8D24F /* SearchingViewController.swift in Sources */,
 				92AA47EC2775F1C900E0914F /* AppDelegate.swift in Sources */,
+				92A7873B27847FE900E24FD2 /* CodableConverter.swift in Sources */,
 				92AA48082775FF5200E0914F /* ContainerViewController.swift in Sources */,
 				92AA47F62775F1C900E0914F /* Wallpaper.xcdatamodeld in Sources */,
 				92AA47EE2775F1C900E0914F /* SceneDelegate.swift in Sources */,

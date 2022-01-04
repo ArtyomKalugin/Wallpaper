@@ -12,11 +12,7 @@ protocol MainScreenViewControllerDelegate: AnyObject {
 }
 
 class MainScreenViewController: UIViewController {
-    @IBOutlet weak var textField: UITextField!
-    
     weak var delegate: MainScreenViewControllerDelegate?
-    
-    private let networkService: NetworkService = NetworkService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +23,10 @@ class MainScreenViewController: UIViewController {
     }
     
     @IBAction func searchButtonAction(_ sender: Any) {
-        guard let searchingImage: String = textField.text else { return }
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier:  "SearchingViewController") as? SearchingViewController else { return }
+        viewController.modalPresentationStyle = .fullScreen
         
-        networkService.loadImages(searchingImage: searchingImage) { images, error in
-            if images != nil {
-                print(images)
-            } else {
-                print(error)
-            }
-        }
+        present(viewController, animated: true, completion: nil)
     }
 }
