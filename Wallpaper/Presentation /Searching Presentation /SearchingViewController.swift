@@ -9,21 +9,24 @@ import UIKit
 
 class SearchingViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var searchingTextField: UITextField!
     @IBOutlet weak var searchLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     // private properties
     private var images: [WallpaperImage] = []
     private let converter: CodableConverter = CodableConverter()
     private let networkService: NetworkService = NetworkService()
     private var numberOfNotifications = 0
+    private let countCells = 3
+    private let offsetCells: CGFloat = 2.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureKeyboard()
         configureShift()
+        configureCollectionView()
     }
     
     deinit {
@@ -33,6 +36,11 @@ class SearchingViewController: UIViewController {
     
     @IBAction func backButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func configureCollectionView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     private func configureShift() {
@@ -88,7 +96,7 @@ class SearchingViewController: UIViewController {
     
     @objc private func didTapSearch() {
         guard let searchingImage: String = searchingTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
-
+        
         networkService.loadImages(searchingImage: searchingImage) { [weak self] response, error in
             if let response = response {
                 self?.images = []
@@ -98,19 +106,67 @@ class SearchingViewController: UIViewController {
                     self?.images.append(wallpaperImage)
                 }
                 
-                let url = URL(string: (self?.images[0].fullUrl)!)
-                
-                if let data = try? Data(contentsOf: url!) {
-                    print((self?.images[0].fullUrl)!)
-                    DispatchQueue.main.async {
-                        self?.imageView.image = UIImage(data: data)
-                    }
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
                 }
             } else {
-                print(error)
+                print(error as Any)
             }
         }
             
         searchingTextField.resignFirstResponder()
+    }
+}
+
+// MARK:- UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+extension SearchingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchingCell", for: indexPath) as! SearchingCollectionViewCell
+        
+        let url = URL(string: (images[indexPath.row].fullUrl))
+        if let data = try? Data(contentsOf: url!) {
+            let image = UIImage(data: data)
+            cell.configure(with: image!)
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print("ALOO")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? SearchingCollectionViewCell {
+                cell.imageView.transform = .init(scaleX: 0.95, y: 0.95)
+                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? SearchingCollectionViewCell {
+                cell.imageView.transform = .identity
+                cell.contentView.backgroundColor = .clear
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let frameCollectionView = collectionView.frame
+        let cellWidth = frameCollectionView.width / CGFloat(countCells)
+        let cellHeight = CGFloat(250)
+        let spacing = CGFloat(countCells - 1) * offsetCells / CGFloat(countCells)
+        
+        return CGSize(width: cellWidth - spacing, height: cellHeight - offsetCells)
     }
 }

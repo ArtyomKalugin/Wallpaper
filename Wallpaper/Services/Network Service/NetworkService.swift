@@ -21,7 +21,7 @@ class NetworkService {
 
         operationQueue.addOperation {
             let session = URLSession(configuration: self.configuration)
-            let urlString = self.baseUrl + self.pixabayApiKey + "&q=\(searchingImage)" + "&page=2" + "&per_page=5"
+            let urlString = self.baseUrl + self.pixabayApiKey + "&q=\(searchingImage)" + "&page=2" + "&per_page=10"
             guard let imageURL = URL(string: urlString) else {
                 completion(nil, nil)
 

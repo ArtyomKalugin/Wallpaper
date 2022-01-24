@@ -22,6 +22,7 @@
 		92E3B237277F09B900A8D11F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3B236277F09B900A8D11F /* NetworkService.swift */; };
 		92E3B23A277F1E1400A8D11F /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3B239277F1E1300A8D11F /* Codable.swift */; };
 		92E3B23D277F23C200A8D11F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92E3B23C277F23C200A8D11F /* Alamofire */; };
+		92F074DF279F05DC00FBA47C /* SearchingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F074DE279F05DC00FBA47C /* SearchingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		92DC158A2781B8CC00D8D24F /* SearchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingViewController.swift; sourceTree = "<group>"; };
 		92E3B236277F09B900A8D11F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		92E3B239277F1E1300A8D11F /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		92F074DE279F05DC00FBA47C /* SearchingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				92DC158A2781B8CC00D8D24F /* SearchingViewController.swift */,
+				92F074DE279F05DC00FBA47C /* SearchingCollectionViewCell.swift */,
 			);
 			path = "Searching Presentation ";
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92AA48052775FE7F00E0914F /* MainScreenViewController.swift in Sources */,
+				92F074DF279F05DC00FBA47C /* SearchingCollectionViewCell.swift in Sources */,
 				92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */,
 				92AA480A2775FF5A00E0914F /* MenuViewController.swift in Sources */,
 				92E3B23A277F1E1400A8D11F /* Codable.swift in Sources */,
