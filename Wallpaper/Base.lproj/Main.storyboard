@@ -141,14 +141,14 @@
                         <viewLayoutGuide key="safeArea" id="fYu-ky-Qro"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="trailing" secondItem="fYu-ky-Qro" secondAttribute="trailing" id="0xR-lZ-AhY"/>
-                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="leading" secondItem="fYu-ky-Qro" secondAttribute="leading" id="3Aj-ja-KTn"/>
-                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="top" secondItem="rbb-PI-9gW" secondAttribute="bottom" constant="10" id="AWk-GD-BA3"/>
+                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="top" secondItem="rbb-PI-9gW" secondAttribute="bottom" constant="10" id="3gf-Dq-KzX"/>
+                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="leading" secondItem="fYu-ky-Qro" secondAttribute="leading" id="GN2-Dk-h0n"/>
+                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="bottom" secondItem="fYu-ky-Qro" secondAttribute="bottom" id="HFj-za-WDM"/>
                             <constraint firstItem="fYu-ky-Qro" firstAttribute="trailing" secondItem="rbb-PI-9gW" secondAttribute="trailing" constant="16" id="Msn-FH-E0x"/>
                             <constraint firstItem="fYu-ky-Qro" firstAttribute="bottom" secondItem="rbb-PI-9gW" secondAttribute="bottom" constant="676" id="Na9-2h-2a6"/>
+                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="trailing" secondItem="fYu-ky-Qro" secondAttribute="trailing" id="QIF-WU-g7s"/>
                             <constraint firstItem="fYu-ky-Qro" firstAttribute="trailing" secondItem="PWe-JU-lAf" secondAttribute="trailing" constant="25" id="W74-ws-KfB"/>
                             <constraint firstItem="yec-0g-LWy" firstAttribute="top" secondItem="fYu-ky-Qro" secondAttribute="top" constant="8" id="aFV-Mx-t6R"/>
-                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="bottom" secondItem="fYu-ky-Qro" secondAttribute="bottom" id="qnt-4O-hEO"/>
                             <constraint firstItem="rbb-PI-9gW" firstAttribute="leading" secondItem="fYu-ky-Qro" secondAttribute="leading" constant="16" id="syV-Yx-qdw"/>
                             <constraint firstItem="rbb-PI-9gW" firstAttribute="top" secondItem="fYu-ky-Qro" secondAttribute="top" id="txO-ER-7gl"/>
                         </constraints>
@@ -163,6 +163,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuu-wb-nGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="813.84615384615381" y="83.886255924170612"/>
+        </scene>
+        <!--Detail Image View Controller-->
+        <scene sceneID="LN0-QY-KcQ">
+            <objects>
+                <viewController restorationIdentifier="DetailImageViewController" storyboardIdentifier="DetailImageViewController" id="cXs-lv-NBU" customClass="DetailImageViewController" customModule="Wallpaper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f02-Ts-Cad">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a2B-XV-Qb7">
+                                <rect key="frame" x="0.0" y="94" width="390" height="716"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3t-4x-plE">
+                                <rect key="frame" x="16" y="44" width="42" height="38"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="cXs-lv-NBU" eventType="touchUpInside" id="NQ2-0G-UZa"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvO-60-ID9">
+                                <rect key="frame" x="0.0" y="730" width="390" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-DQ-5gu">
+                                        <rect key="frame" x="147" y="21.666666666666629" width="96" height="37"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Скачать">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="19"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="downloadButtonAction:" destination="cXs-lv-NBU" eventType="touchUpInside" id="zft-YP-0VK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.13518846649484539" green="0.13518846649484539" blue="0.13518846649484539" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="fgv-DQ-5gu" firstAttribute="centerY" secondItem="IvO-60-ID9" secondAttribute="centerY" id="L8Y-Pd-0BW"/>
+                                    <constraint firstItem="fgv-DQ-5gu" firstAttribute="centerX" secondItem="IvO-60-ID9" secondAttribute="centerX" id="fos-8G-GaB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cvu-FB-afH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IvO-60-ID9" firstAttribute="bottom" secondItem="cvu-FB-afH" secondAttribute="bottom" id="0gn-ku-JiU"/>
+                            <constraint firstItem="IvO-60-ID9" firstAttribute="top" secondItem="cvu-FB-afH" secondAttribute="top" constant="686" id="7jc-1b-eoG"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="leading" secondItem="cvu-FB-afH" secondAttribute="leading" id="89S-3Q-54I"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="top" secondItem="cvu-FB-afH" secondAttribute="top" constant="50" id="dhZ-53-OUB"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="top" secondItem="L3t-4x-plE" secondAttribute="bottom" constant="12" id="fI2-9u-mJO"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="trailing" secondItem="cvu-FB-afH" secondAttribute="trailing" id="fe2-PR-SDz"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="bottom" secondItem="cvu-FB-afH" secondAttribute="bottom" id="ghJ-tb-OeX"/>
+                            <constraint firstItem="IvO-60-ID9" firstAttribute="trailing" secondItem="cvu-FB-afH" secondAttribute="trailing" id="m0E-j5-qz4"/>
+                            <constraint firstItem="IvO-60-ID9" firstAttribute="leading" secondItem="cvu-FB-afH" secondAttribute="leading" id="pHf-Lc-i5C"/>
+                            <constraint firstItem="L3t-4x-plE" firstAttribute="leading" secondItem="cvu-FB-afH" secondAttribute="leading" constant="16" id="s32-AZ-rc0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="downloadButton" destination="fgv-DQ-5gu" id="lrf-aK-5Wt"/>
+                        <outlet property="imageView" destination="a2B-XV-Qb7" id="B9c-kr-mXD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eMS-pY-HXc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1661.5384615384614" y="83.886255924170612"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="js8-FF-zq6">
@@ -186,6 +254,7 @@
     </scenes>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">

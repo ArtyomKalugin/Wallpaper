@@ -24,9 +24,9 @@ class SearchingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureCollectionView()
         configureKeyboard()
         configureShift()
-        configureCollectionView()
     }
     
     deinit {
@@ -140,25 +140,13 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        print("ALOO")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.5) {
-            if let cell = collectionView.cellForItem(at: indexPath) as? SearchingCollectionViewCell {
-                cell.imageView.transform = .init(scaleX: 0.95, y: 0.95)
-                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.5) {
-            if let cell = collectionView.cellForItem(at: indexPath) as? SearchingCollectionViewCell {
-                cell.imageView.transform = .identity
-                cell.contentView.backgroundColor = .clear
-            }
-        }
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.wallpaperImage = images[indexPath.row]
+        
+        present(viewController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

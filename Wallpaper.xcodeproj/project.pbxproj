@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9229624F27A031F30036071A /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229624E27A031F30036071A /* DetailImageViewController.swift */; };
 		92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873727847EC600E24FD2 /* WallpaperImage .swift */; };
 		92A7873B27847FE900E24FD2 /* CodableConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873A27847FE900E24FD2 /* CodableConverter.swift */; };
 		92AA47EC2775F1C900E0914F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA47EB2775F1C900E0914F /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9229624E27A031F30036071A /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
 		92A7873727847EC600E24FD2 /* WallpaperImage .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WallpaperImage .swift"; sourceTree = "<group>"; };
 		92A7873A27847FE900E24FD2 /* CodableConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableConverter.swift; sourceTree = "<group>"; };
 		92AA47E82775F1C900E0914F /* Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9229624D27A031CB0036071A /* Detail Presentation  */ = {
+			isa = PBXGroup;
+			children = (
+				9229624E27A031F30036071A /* DetailImageViewController.swift */,
+			);
+			path = "Detail Presentation ";
+			sourceTree = "<group>";
+		};
 		92A7873927847FC200E24FD2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 		92AA48022775FE4900E0914F /* Presentation  */ = {
 			isa = PBXGroup;
 			children = (
+				9229624D27A031CB0036071A /* Detail Presentation  */,
 				92DC15892781B8A800D8D24F /* Searching Presentation  */,
 				92AA48062775FF3F00E0914F /* Menu Presentation  */,
 				92AA48032775FE5500E0914F /* Main Screen Presentation  */,
@@ -245,6 +256,7 @@
 				92DC158B2781B8CC00D8D24F /* SearchingViewController.swift in Sources */,
 				92AA47EC2775F1C900E0914F /* AppDelegate.swift in Sources */,
 				92A7873B27847FE900E24FD2 /* CodableConverter.swift in Sources */,
+				9229624F27A031F30036071A /* DetailImageViewController.swift in Sources */,
 				92AA48082775FF5200E0914F /* ContainerViewController.swift in Sources */,
 				92AA47F62775F1C900E0914F /* Wallpaper.xcdatamodeld in Sources */,
 				92AA47EE2775F1C900E0914F /* SceneDelegate.swift in Sources */,
