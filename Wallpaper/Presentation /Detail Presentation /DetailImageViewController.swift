@@ -28,7 +28,7 @@ class DetailImageViewController: UIViewController {
     
     @IBAction func downloadButtonAction(_ sender: Any) {
         if let image = imageView.image {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(savingCompleted(image:error:contextInfo:)), nil)
         } else {
             downloadButton.isEnabled = false
         }
@@ -42,5 +42,10 @@ class DetailImageViewController: UIViewController {
             let image = UIImage(data: data)
             imageView.image = image
         }
+    }
+    
+    // objc functions
+    @objc private func savingCompleted(image: UIImage?, error: Error?, contextInfo: UnsafeMutableRawPointer?) {
+        showAlert(title: NSLocalizedString("Done", comment: ""), body: NSLocalizedString("Image successfylly saved", comment: ""), button: "Оk", actions: nil)
     }
 }

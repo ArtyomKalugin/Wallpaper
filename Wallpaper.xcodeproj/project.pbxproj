@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9229624F27A031F30036071A /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229624E27A031F30036071A /* DetailImageViewController.swift */; };
+		9276B04727A196F80091F52B /* AlertHelper .swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276B04627A196F80091F52B /* AlertHelper .swift */; };
 		92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873727847EC600E24FD2 /* WallpaperImage .swift */; };
 		92A7873B27847FE900E24FD2 /* CodableConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873A27847FE900E24FD2 /* CodableConverter.swift */; };
 		92AA47EC2775F1C900E0914F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA47EB2775F1C900E0914F /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		9229624E27A031F30036071A /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
+		9276B04627A196F80091F52B /* AlertHelper .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertHelper .swift"; sourceTree = "<group>"; };
 		92A7873727847EC600E24FD2 /* WallpaperImage .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WallpaperImage .swift"; sourceTree = "<group>"; };
 		92A7873A27847FE900E24FD2 /* CodableConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableConverter.swift; sourceTree = "<group>"; };
 		92AA47E82775F1C900E0914F /* Wallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				92A7873A27847FE900E24FD2 /* CodableConverter.swift */,
+				9276B04627A196F80091F52B /* AlertHelper .swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				92AA47F62775F1C900E0914F /* Wallpaper.xcdatamodeld in Sources */,
 				92AA47EE2775F1C900E0914F /* SceneDelegate.swift in Sources */,
 				92E3B237277F09B900A8D11F /* NetworkService.swift in Sources */,
+				9276B04727A196F80091F52B /* AlertHelper .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
