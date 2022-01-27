@@ -15,7 +15,6 @@ class DetailImageViewController: UIViewController {
     // public properties
     public var wallpaperImage: WallpaperImage?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

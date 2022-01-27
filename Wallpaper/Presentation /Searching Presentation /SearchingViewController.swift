@@ -20,6 +20,9 @@ class SearchingViewController: UIViewController {
     private var numberOfNotifications = 0
     private let countCells = 3
     private let offsetCells: CGFloat = 2.0
+    private var page = 1
+    private var searchingImage: String?
+    private var isLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,7 @@ class SearchingViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // private functions
     private func configureCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -63,6 +67,44 @@ class SearchingViewController: UIViewController {
         searchingTextField.inputAccessoryView = toolBar
     }
     
+    private func loadImages() {
+        let spinner = createSpinnerFooter()
+        
+        DispatchQueue.main.async {
+            self.view.addSubview(spinner)
+        }
+        
+        networkService.loadImages(searchingImage: searchingImage!, page: page) { [weak self] response, error in
+            if let response = response {
+                
+                for hit in response.hits {
+                    let wallpaperImage: WallpaperImage = (self?.converter.convertToImage(hit: hit))!
+                    self?.images.append(wallpaperImage)
+                }
+                
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                    spinner.removeFromSuperview()
+                }
+                
+                self?.isLoading = false
+            } else {
+                print(error as Any)
+            }
+        }
+    }
+    
+    private func createSpinnerFooter() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 375, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        
+        return footerView
+    }
+    
+    // objc functions
     @objc private func hideKeyboard() {
         self.view.endEditing(true)
     }
@@ -95,25 +137,11 @@ class SearchingViewController: UIViewController {
     }
     
     @objc private func didTapSearch() {
-        guard let searchingImage: String = searchingTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
+        guard let searchingText: String = searchingTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
         
-        networkService.loadImages(searchingImage: searchingImage) { [weak self] response, error in
-            if let response = response {
-                self?.images = []
-                
-                for hit in response.hits {
-                    let wallpaperImage: WallpaperImage = (self?.converter.convertToImage(hit: hit))!
-                    self?.images.append(wallpaperImage)
-                }
-                
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                }
-            } else {
-                print(error as Any)
-            }
-        }
-            
+        images = []
+        searchingImage = searchingText
+        loadImages()
         searchingTextField.resignFirstResponder()
     }
 }
@@ -156,5 +184,18 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
         let spacing = CGFloat(countCells - 1) * offsetCells / CGFloat(countCells)
         
         return CGSize(width: cellWidth - spacing, height: cellHeight - offsetCells)
+    }
+}
+
+// MARK:- UIScrollViewDelegate
+extension SearchingViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        
+        if (position > (scrollView.contentSize.height - scrollView.frame.size.height)) && !isLoading {
+            isLoading = true
+            page += 1
+            loadImages()
+        }
     }
 }

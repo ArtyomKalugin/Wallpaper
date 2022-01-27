@@ -15,13 +15,11 @@ class NetworkService {
     private let pixabayApiKey: String = "25051487-c2de62bd493694276c9cb9dc7"
 
     // MARK: - Public functions
-    func loadImages(searchingImage: String, completion: @escaping (SearchCodable?, Error?) -> Void) {
+    func loadImages(searchingImage: String, page: Int, completion: @escaping (SearchCodable?, Error?) -> Void) {
 
-        let operationQueue = OperationQueue()
-
-        operationQueue.addOperation {
+        DispatchQueue.global(qos: .background).async {
             let session = URLSession(configuration: self.configuration)
-            let urlString = self.baseUrl + self.pixabayApiKey + "&q=\(searchingImage)" + "&page=2" + "&per_page=10"
+            let urlString = self.baseUrl + self.pixabayApiKey + "&q=\(searchingImage)" + "&page=\(page)" + "&per_page=9"
             guard let imageURL = URL(string: urlString) else {
                 completion(nil, nil)
 
