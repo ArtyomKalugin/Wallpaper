@@ -27,7 +27,7 @@ class NetworkService {
             }
 
             var request = URLRequest(url: imageURL)
-            request.cachePolicy = .reloadIgnoringLocalCacheData
+            request.cachePolicy = .returnCacheDataElseLoad
             request.httpMethod = "GET"
 
             let dataTask = session.dataTask(with: request) { data, response, error in

@@ -23,6 +23,7 @@ class SearchingViewController: UIViewController {
     private var page = 1
     private var searchingImage: String?
     private var isLoading = false
+    private var photos: [UIImage?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,18 +79,35 @@ class SearchingViewController: UIViewController {
             if let response = response {
                 
                 for hit in response.hits {
-                    let wallpaperImage: WallpaperImage = (self?.converter.convertToImage(hit: hit))!
+                    guard let wallpaperImage: WallpaperImage = (self?.converter.convertToImage(hit: hit)) else {
+                        continue
+                    }
                     self?.images.append(wallpaperImage)
+                    
+                    let url = URL(string: wallpaperImage.fullUrl)
+                    if let data = try? Data(contentsOf: url!) {
+                        let image = UIImage(data: data)
+                        self?.photos.append(image)
+                    }
                 }
                 
                 DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
+                    if self?.images.count == 0 {
+                        self?.showAlert(title: NSLocalizedString("Ошибка", comment: ""), body: NSLocalizedString("По вашему запросу ничего не найдено!", comment: ""), button: "ОК", actions: nil)
+                    } else {
+                        self?.collectionView.reloadData()
+                    }
+                    
                     spinner.removeFromSuperview()
                 }
                 
                 self?.isLoading = false
             } else {
-                print(error as Any)
+                DispatchQueue.main.async {
+                    self?.showAlert(title: NSLocalizedString("Ошибка", comment: ""), body: NSLocalizedString("По вашему запросу ничего не найдено!", comment: ""), button: "ОК", actions: nil)
+                    
+                    spinner.removeFromSuperview()
+                }
             }
         }
     }
@@ -137,10 +155,18 @@ class SearchingViewController: UIViewController {
     }
     
     @objc private func didTapSearch() {
-        guard let searchingText: String = searchingTextField.text?.trimmingCharacters(in: .whitespaces) else { return }
-        
         images = []
-        searchingImage = searchingText
+        photos = []
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        
+        guard let searchingText: String = searchingTextField.text?.trimmingCharacters(in: .whitespaces) else {
+            return
+        }
+        
+        searchingImage = StringHelper.convertToAPIString(string: searchingText)
         loadImages()
         searchingTextField.resignFirstResponder()
     }
@@ -156,25 +182,25 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchingCell", for: indexPath) as! SearchingCollectionViewCell
-        
-        let url = URL(string: (images[indexPath.row].fullUrl))
-        if let data = try? Data(contentsOf: url!) {
-            let image = UIImage(data: data)
-            cell.configure(with: image!)
-        }
+        cell.configure(image: photos[indexPath.row]!)
+//        cell.configure(stringUrl: images[indexPath.row].fullUrl)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
-        viewController.modalPresentationStyle = .fullScreen
-        viewController.wallpaperImage = images[indexPath.row]
+        DispatchQueue.main.async { [self] in
+            collectionView.deselectItem(at: indexPath, animated: true)
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
+            viewController.modalPresentationStyle = .fullScreen
+            viewController.wallpaperImage = images[indexPath.row]
+            
+            present(viewController, animated: true, completion: nil)
+        }
         
-        present(viewController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -192,7 +218,7 @@ extension SearchingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         
-        if (position > (scrollView.contentSize.height - scrollView.frame.size.height)) && !isLoading {
+        if (position > (scrollView.contentSize.height - scrollView.frame.size.height + 50)) && !isLoading {
             isLoading = true
             page += 1
             loadImages()

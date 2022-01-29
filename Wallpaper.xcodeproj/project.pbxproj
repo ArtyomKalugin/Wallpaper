@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		921BC13827A5985A00B9E372 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921BC13727A5985A00B9E372 /* StringHelper.swift */; };
 		9229624F27A031F30036071A /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229624E27A031F30036071A /* DetailImageViewController.swift */; };
 		9276B04727A196F80091F52B /* AlertHelper .swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276B04627A196F80091F52B /* AlertHelper .swift */; };
 		92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873727847EC600E24FD2 /* WallpaperImage .swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		921BC13727A5985A00B9E372 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		9229624E27A031F30036071A /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
 		9276B04627A196F80091F52B /* AlertHelper .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertHelper .swift"; sourceTree = "<group>"; };
 		92A7873727847EC600E24FD2 /* WallpaperImage .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WallpaperImage .swift"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				92A7873A27847FE900E24FD2 /* CodableConverter.swift */,
 				9276B04627A196F80091F52B /* AlertHelper .swift */,
+				921BC13727A5985A00B9E372 /* StringHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				92AA48052775FE7F00E0914F /* MainScreenViewController.swift in Sources */,
 				92F074DF279F05DC00FBA47C /* SearchingCollectionViewCell.swift in Sources */,
 				92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */,
+				921BC13827A5985A00B9E372 /* StringHelper.swift in Sources */,
 				92AA480A2775FF5A00E0914F /* MenuViewController.swift in Sources */,
 				92E3B23A277F1E1400A8D11F /* Codable.swift in Sources */,
 				92DC158B2781B8CC00D8D24F /* SearchingViewController.swift in Sources */,

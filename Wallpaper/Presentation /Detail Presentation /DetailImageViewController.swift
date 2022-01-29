@@ -45,6 +45,6 @@ class DetailImageViewController: UIViewController {
     
     // objc functions
     @objc private func savingCompleted(image: UIImage?, error: Error?, contextInfo: UnsafeMutableRawPointer?) {
-        showAlert(title: NSLocalizedString("Done", comment: ""), body: NSLocalizedString("Image successfylly saved", comment: ""), button: "Оk", actions: nil)
+        showAlert(title: NSLocalizedString("Завершено", comment: ""), body: NSLocalizedString("Изображение успешно скачено!", comment: ""), button: "ОК", actions: nil)
     }
 }
