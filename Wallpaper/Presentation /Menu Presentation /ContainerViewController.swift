@@ -74,6 +74,6 @@ extension ContainerViewController: MainScreenViewControllerDelegate {
 extension ContainerViewController: MenuViewControllerDelegate {
     func didSelect(menuItem: MenuViewController.MenuOptions) {
         toggleMenu()
-        print(menuItem.rawValue)
+        print(menuItem)
     }
 }

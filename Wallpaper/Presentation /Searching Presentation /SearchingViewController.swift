@@ -182,7 +182,8 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchingCell", for: indexPath) as! SearchingCollectionViewCell
-        cell.configure(image: photos[indexPath.row]!)
+        cell.imageURLString = images[indexPath.row].fullUrl
+//        cell.configure(image: photos[indexPath.row]!)
 //        cell.configure(stringUrl: images[indexPath.row].fullUrl)
         
         return cell
@@ -218,7 +219,7 @@ extension SearchingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         
-        if (position > (scrollView.contentSize.height - scrollView.frame.size.height + 50)) && !isLoading {
+        if (position > (scrollView.contentSize.height - scrollView.frame.size.height)) && !isLoading {
             isLoading = true
             page += 1
             loadImages()
