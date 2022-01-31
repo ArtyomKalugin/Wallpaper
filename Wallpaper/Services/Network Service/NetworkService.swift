@@ -11,7 +11,7 @@ class NetworkService {
     // private properties
     private let configuration = URLSessionConfiguration.default
     private let decoder = JSONDecoder()
-    private let baseUrl: String = "https://pixabay.com/api/?lang=ru&orientation=vertical&key="
+    private let baseUrl: String = "https://pixabay.com/api/?lang=ru&safesearch=true&orientation=vertical&key="
     private let pixabayApiKey: String = "25051487-c2de62bd493694276c9cb9dc7"
 
     // MARK: - Public functions

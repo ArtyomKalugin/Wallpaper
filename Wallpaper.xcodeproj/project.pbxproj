@@ -21,6 +21,7 @@
 		92AA48052775FE7F00E0914F /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48042775FE7F00E0914F /* MainScreenViewController.swift */; };
 		92AA48082775FF5200E0914F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48072775FF5200E0914F /* ContainerViewController.swift */; };
 		92AA480A2775FF5A00E0914F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA48092775FF5A00E0914F /* MenuViewController.swift */; };
+		92D4BF0527A80BEA00AFA055 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D4BF0427A80BEA00AFA055 /* MainCollectionViewCell.swift */; };
 		92DC158B2781B8CC00D8D24F /* SearchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DC158A2781B8CC00D8D24F /* SearchingViewController.swift */; };
 		92E3B237277F09B900A8D11F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3B236277F09B900A8D11F /* NetworkService.swift */; };
 		92E3B23A277F1E1400A8D11F /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3B239277F1E1300A8D11F /* Codable.swift */; };
@@ -45,6 +46,7 @@
 		92AA48042775FE7F00E0914F /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		92AA48072775FF5200E0914F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		92AA48092775FF5A00E0914F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		92D4BF0427A80BEA00AFA055 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		92DC158A2781B8CC00D8D24F /* SearchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingViewController.swift; sourceTree = "<group>"; };
 		92E3B236277F09B900A8D11F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		92E3B239277F1E1300A8D11F /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				92AA48042775FE7F00E0914F /* MainScreenViewController.swift */,
+				92D4BF0427A80BEA00AFA055 /* MainCollectionViewCell.swift */,
 			);
 			path = "Main Screen Presentation ";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				92AA48052775FE7F00E0914F /* MainScreenViewController.swift in Sources */,
 				92F074DF279F05DC00FBA47C /* SearchingCollectionViewCell.swift in Sources */,
 				92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */,
+				92D4BF0527A80BEA00AFA055 /* MainCollectionViewCell.swift in Sources */,
 				921BC13827A5985A00B9E372 /* StringHelper.swift in Sources */,
 				92AA480A2775FF5A00E0914F /* MenuViewController.swift in Sources */,
 				92E3B23A277F1E1400A8D11F /* Codable.swift in Sources */,
