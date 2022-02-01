@@ -16,8 +16,8 @@ class MenuViewController: UIViewController {
     weak var delegate: MenuViewControllerDelegate?
     
     enum MenuOptions: String, CaseIterable {
-        case home = "Home"
-        case aboutUs = "About Us"
+        case abstract = "Абстрактное Abstract"
+        case popular = "Популярное Popular"
     }
 
     private let tableView: UITableView = {
@@ -62,7 +62,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = MenuOptions.allCases[indexPath.row].rawValue
+        let stringArray: [String] = MenuOptions.allCases[indexPath.row].rawValue.components(separatedBy: " ")
+        cell.textLabel?.text = stringArray[0]
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         cell.contentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)

@@ -116,6 +116,12 @@ class MainScreenViewController: UIViewController {
             }
         }
     }
+    
+    // public functions
+    public func changeCategory(category: String, russianCategory: String) {
+        categoryLabel.text = russianCategory
+        makeRequest(request: category)
+    }
 
     @IBAction func menuButtonAction(_ sender: UIButton) {
         delegate?.toggleMenu()

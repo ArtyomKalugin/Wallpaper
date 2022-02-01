@@ -74,6 +74,7 @@ extension ContainerViewController: MainScreenViewControllerDelegate {
 extension ContainerViewController: MenuViewControllerDelegate {
     func didSelect(menuItem: MenuViewController.MenuOptions) {
         toggleMenu()
-        print(menuItem)
+        let stringArray: [String] = menuItem.rawValue.components(separatedBy: " ")
+        mainScreenViewController.changeCategory(category: stringArray[1], russianCategory: stringArray[0])
     }
 }
