@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol MainScreenViewControllerDelegate: AnyObject {
     func toggleMenu()
@@ -27,15 +28,16 @@ class MainScreenViewController: UIViewController {
     private let countCells = 3
     private let offsetCells: CGFloat = 2.0
     private var page = 1
-    private var searchingImage: String?
+    private var searchingImage = "wallpaper"
     private var isLoading = false
     private var photos: [UIImage?] = []
+    private var spinner = UIView()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         if photos.isEmpty {
-            makeRequest(request: "")
+            makeRequest(request: searchingImage)
         }
     }
     
@@ -74,13 +76,13 @@ class MainScreenViewController: UIViewController {
     }
     
     private func loadImages() {
-        let spinner = createSpinnerFooter()
+        spinner = createSpinnerFooter()
         
         DispatchQueue.main.async {
-            self.view.addSubview(spinner)
+            self.view.addSubview(self.spinner)
         }
         
-        networkService.loadImages(searchingImage: searchingImage!, page: page) { [weak self] response, error in
+        networkService.loadImages(searchingImage: searchingImage, page: page) { [weak self] response, error in
             if let response = response {
                 
                 for hit in response.hits {
@@ -103,7 +105,7 @@ class MainScreenViewController: UIViewController {
                         self?.collectionView.reloadData()
                     }
                     
-                    spinner.removeFromSuperview()
+                    self!.spinner.removeFromSuperview()
                 }
                 
                 self?.isLoading = false
@@ -111,7 +113,7 @@ class MainScreenViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.showAlert(title: NSLocalizedString("Ошибка", comment: ""), body: NSLocalizedString("По вашему запросу ничего не найдено!", comment: ""), button: "ОК", actions: nil)
                     
-                    spinner.removeFromSuperview()
+                    self!.spinner.removeFromSuperview()
                 }
             }
         }
@@ -120,6 +122,7 @@ class MainScreenViewController: UIViewController {
     // public functions
     public func changeCategory(category: String, russianCategory: String) {
         categoryLabel.text = russianCategory
+        spinner.removeFromSuperview()
         makeRequest(request: category)
     }
 
@@ -146,24 +149,22 @@ extension MainScreenViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
-        cell.imageURLString = images[indexPath.row].fullUrl
-//        cell.configure(image: photos[indexPath.row]!)
-//        cell.configure(stringUrl: images[indexPath.row].fullUrl)
+        cell.configure(stringUrl: images[indexPath.row].previewUrl)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        DispatchQueue.main.async { [self] in
+        DispatchQueue.main.async { [weak self] in
             collectionView.deselectItem(at: indexPath, animated: true)
             
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
             viewController.modalPresentationStyle = .fullScreen
-            viewController.wallpaperImage = images[indexPath.row]
+            viewController.wallpaperImage = self?.images[indexPath.row]
             
-            present(viewController, animated: true, completion: nil)
+            self?.present(viewController, animated: true, completion: nil)
         }
         
     }

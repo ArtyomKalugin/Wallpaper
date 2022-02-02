@@ -182,9 +182,7 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchingCell", for: indexPath) as! SearchingCollectionViewCell
-        cell.imageURLString = images[indexPath.row].fullUrl
-//        cell.configure(image: photos[indexPath.row]!)
-//        cell.configure(stringUrl: images[indexPath.row].fullUrl)
+        cell.configure(stringUrl: images[indexPath.row].fullUrl)
         
         return cell
     }

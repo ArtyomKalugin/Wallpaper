@@ -16,8 +16,8 @@ class MenuViewController: UIViewController {
     weak var delegate: MenuViewControllerDelegate?
     
     enum MenuOptions: String, CaseIterable {
-        case abstract = "Абстрактное Abstract"
-        case popular = "Популярное Popular"
+        case abstract = "Абстрактное abstract"
+        case popular = "Популярное wallpaper"
     }
 
     private let tableView: UITableView = {

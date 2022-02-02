@@ -19,10 +19,11 @@ class NetworkService {
 
         DispatchQueue.global(qos: .background).async {
             let session = URLSession(configuration: self.configuration)
-            let urlString = self.baseUrl + self.pixabayApiKey + "&q=\(searchingImage)" + "&page=\(page)" + "&per_page=9"
+            
+            let urlString = self.baseUrl + self.pixabayApiKey + "&q=\(searchingImage)" + "&page=\(page)" + "&per_page=9" + "&min_width=\(UserDevice.width)" + "&min_height=\(UserDevice.height)"
             
             if let urlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imageURL = URL(string: urlString) {
-                print(imageURL)
+                
                 var request = URLRequest(url: imageURL)
                 request.cachePolicy = .returnCacheDataElseLoad
                 request.httpMethod = "GET"

@@ -14,25 +14,27 @@ class ContainerViewController: UIViewController {
         case closed
     }
     
+    // private properties
     private var menuState: MenuState = .closed
-    
-    let menuViewController = MenuViewController()
-    var mainScreenViewController = MainScreenViewController()
+    private let menuViewController = MenuViewController()
+    private var mainScreenViewController = MainScreenViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addChildVCs()
+        addMenuScreen()
+        addMainScreen()
     }
     
-    private func addChildVCs() {
-        // Menu
+    // private functions
+    private func addMenuScreen() {
         menuViewController.delegate = self
         addChild(menuViewController)
         view.addSubview(menuViewController.view)
         menuViewController.didMove(toParent: self)
-        
-        // Main Screen
+    }
+    
+    private func addMainScreen() {
         let mainScreenViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainScreenViewController") as! MainScreenViewController
         self.mainScreenViewController = mainScreenViewController
         self.mainScreenViewController.delegate = self
@@ -73,8 +75,8 @@ extension ContainerViewController: MainScreenViewControllerDelegate {
 // MARK: - MenuViewControllerDelegate
 extension ContainerViewController: MenuViewControllerDelegate {
     func didSelect(menuItem: MenuViewController.MenuOptions) {
-        toggleMenu()
         let stringArray: [String] = menuItem.rawValue.components(separatedBy: " ")
         mainScreenViewController.changeCategory(category: stringArray[1], russianCategory: stringArray[0])
+        toggleMenu()
     }
 }
