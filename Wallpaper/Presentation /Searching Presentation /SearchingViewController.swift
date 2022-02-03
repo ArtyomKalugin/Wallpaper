@@ -113,7 +113,7 @@ class SearchingViewController: UIViewController {
     }
     
     private func createSpinnerFooter() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 375, width: view.frame.size.width, height: 100))
+        let footerView = UIView(frame: CGRect(x: 0, y: (UserDevice.height / 2) - 50, width: view.frame.size.width, height: 100))
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
         footerView.addSubview(spinner)
@@ -136,8 +136,10 @@ class SearchingViewController: UIViewController {
                     self.backButton.alpha = 0
                     self.backButton.isEnabled = false
                 })
+                let window = UIApplication.shared.windows.first
+                let topPadding = window?.safeAreaInsets.top
                 
-                self.view.frame.origin.y -= searchingTextField.frame.origin.y
+                self.view.frame.origin.y -= topPadding ?? 10
                 numberOfNotifications += 1
             }
         }
@@ -206,9 +208,8 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
         let frameCollectionView = collectionView.frame
         let cellWidth = frameCollectionView.width / CGFloat(countCells)
         let cellHeight = CGFloat(250)
-        let spacing = CGFloat(countCells - 1) * offsetCells / CGFloat(countCells)
         
-        return CGSize(width: cellWidth - spacing, height: cellHeight - offsetCells)
+        return CGSize(width: cellWidth - offsetCells, height: cellHeight - offsetCells)
     }
 }
 

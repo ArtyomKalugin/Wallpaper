@@ -115,44 +115,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbb-PI-9gW">
-                                <rect key="frame" x="16" y="44" width="358" height="90"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cki-LG-yXN">
-                                        <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="38"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title="">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="backButtonAction:" destination="ZXx-rU-SO9" eventType="touchUpInside" id="gGQ-M9-r6y"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Поиск" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PWe-JU-lAf">
-                                        <rect key="frame" x="8" y="46" width="341" height="34"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.22002551020408162" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <imageReference key="background" image="magnifyingglass" catalog="system" symbolScale="small"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Поиск" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yec-0g-LWy">
-                                        <rect key="frame" x="149" y="8" width="61" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="cki-LG-yXN" firstAttribute="top" secondItem="rbb-PI-9gW" secondAttribute="top" id="9ti-SM-9xe"/>
-                                    <constraint firstAttribute="trailing" secondItem="yec-0g-LWy" secondAttribute="trailing" constant="148" id="cjK-cW-Qs2"/>
-                                    <constraint firstItem="cki-LG-yXN" firstAttribute="leading" secondItem="rbb-PI-9gW" secondAttribute="leading" id="rcR-lc-fYg"/>
-                                    <constraint firstItem="PWe-JU-lAf" firstAttribute="top" secondItem="cki-LG-yXN" secondAttribute="bottom" constant="8" symbolic="YES" id="tT2-Rs-l2y"/>
-                                    <constraint firstItem="PWe-JU-lAf" firstAttribute="leading" secondItem="cki-LG-yXN" secondAttribute="leading" constant="8" id="uAX-OI-9kW"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jof-6Y-xVg">
                                 <rect key="frame" x="0.0" y="144" width="390" height="666"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -187,20 +149,47 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Поиск" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PWe-JU-lAf">
+                                <rect key="frame" x="16" y="90" width="358" height="34"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.22002551020408162" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <imageReference key="background" image="magnifyingglass" catalog="system" symbolScale="small"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Поиск" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yec-0g-LWy">
+                                <rect key="frame" x="161" y="50" width="69" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cki-LG-yXN">
+                                <rect key="frame" x="16.000000000000004" y="44" width="41.333333333333343" height="38"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="ZXx-rU-SO9" eventType="touchUpInside" id="gGQ-M9-r6y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fYu-ky-Qro"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="top" secondItem="rbb-PI-9gW" secondAttribute="bottom" constant="10" id="3gf-Dq-KzX"/>
-                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="leading" secondItem="fYu-ky-Qro" secondAttribute="leading" id="GN2-Dk-h0n"/>
-                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="bottom" secondItem="fYu-ky-Qro" secondAttribute="bottom" id="HFj-za-WDM"/>
-                            <constraint firstItem="fYu-ky-Qro" firstAttribute="trailing" secondItem="rbb-PI-9gW" secondAttribute="trailing" constant="16" id="Msn-FH-E0x"/>
-                            <constraint firstItem="fYu-ky-Qro" firstAttribute="bottom" secondItem="rbb-PI-9gW" secondAttribute="bottom" constant="676" id="Na9-2h-2a6"/>
-                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="trailing" secondItem="fYu-ky-Qro" secondAttribute="trailing" id="QIF-WU-g7s"/>
-                            <constraint firstItem="fYu-ky-Qro" firstAttribute="trailing" secondItem="PWe-JU-lAf" secondAttribute="trailing" constant="25" id="W74-ws-KfB"/>
-                            <constraint firstItem="yec-0g-LWy" firstAttribute="top" secondItem="fYu-ky-Qro" secondAttribute="top" constant="8" id="aFV-Mx-t6R"/>
-                            <constraint firstItem="rbb-PI-9gW" firstAttribute="leading" secondItem="fYu-ky-Qro" secondAttribute="leading" constant="16" id="syV-Yx-qdw"/>
-                            <constraint firstItem="rbb-PI-9gW" firstAttribute="top" secondItem="fYu-ky-Qro" secondAttribute="top" id="txO-ER-7gl"/>
+                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="bottom" secondItem="fYu-ky-Qro" secondAttribute="bottom" id="1lx-3q-ZhY"/>
+                            <constraint firstItem="cki-LG-yXN" firstAttribute="leading" secondItem="fYu-ky-Qro" secondAttribute="leading" constant="16" id="2OH-Jn-uwX"/>
+                            <constraint firstItem="PWe-JU-lAf" firstAttribute="leading" secondItem="cki-LG-yXN" secondAttribute="leading" id="3bN-Fj-AoP"/>
+                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="trailing" secondItem="fYu-ky-Qro" secondAttribute="trailing" id="9EO-KX-TgO"/>
+                            <constraint firstItem="PWe-JU-lAf" firstAttribute="top" secondItem="yec-0g-LWy" secondAttribute="bottom" constant="15" id="9qd-mY-17o"/>
+                            <constraint firstItem="yec-0g-LWy" firstAttribute="leading" secondItem="cki-LG-yXN" secondAttribute="trailing" constant="103.66666666666666" id="Cbi-Ob-EWb"/>
+                            <constraint firstItem="fYu-ky-Qro" firstAttribute="trailing" secondItem="PWe-JU-lAf" secondAttribute="trailing" constant="16" id="FMv-TX-JRh"/>
+                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="leading" secondItem="fYu-ky-Qro" secondAttribute="leading" id="JI1-uC-ou3"/>
+                            <constraint firstItem="cki-LG-yXN" firstAttribute="top" secondItem="fYu-ky-Qro" secondAttribute="top" id="Ve3-fh-YI2"/>
+                            <constraint firstItem="Jof-6Y-xVg" firstAttribute="top" secondItem="PWe-JU-lAf" secondAttribute="bottom" constant="20" id="kza-32-foL"/>
+                            <constraint firstItem="PWe-JU-lAf" firstAttribute="top" secondItem="cki-LG-yXN" secondAttribute="bottom" constant="8" symbolic="YES" id="zUI-VW-w3N"/>
                         </constraints>
                     </view>
                     <connections>
