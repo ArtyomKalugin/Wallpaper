@@ -16,8 +16,42 @@ class MenuViewController: UIViewController {
     weak var delegate: MenuViewControllerDelegate?
     
     enum MenuOptions: String, CaseIterable {
-        case abstract = "Абстрактное abstract"
         case popular = "Популярное wallpaper"
+        case threed = "3D 3D"
+        case abstraction = "Абстракция abstraction"
+        case anime = "Аниме anime"
+        case art = "Арт art"
+        case white = "Белый white"
+        case vector = "Вектор vector"
+        case cities = "Города cities"
+        case women = "Девушки women"
+        case food = "Еда food"
+        case animals = "Животные animals"
+        case winter = "Зима winter"
+        case space = "Космос space"
+        case summer = "Лето summer"
+        case love = "Любовь love"
+        case macro = "Макро macro"
+        case cars = "Машины cars"
+        case minimalism = "Минимализм minimalism"
+        case motorcycles = "Мотоциклы motorcycles"
+        case men = "Мужчины men"
+        case music = "Музыка music"
+        case neon = "Неон neon"
+        case loneliness = "Одиночество loneliness"
+        case holidays = "Праздники holidays"
+        case nature = "Природа nature"
+        case other = "Разное other"
+        case words = "Слова words"
+        case smilies = "Смайлы smilies"
+        case sport = "Спорт sport"
+        case textures = "Текстуры textures"
+        case dark = "Темные dark"
+        case technologies = "Технологии technologies"
+        case fantasy = "Фэнтези fantasy"
+        case predators = "Хищники predators"
+        case flowers = "Цветы flowers"
+        case black = "Черный black"
     }
 
     private let tableView: UITableView = {
@@ -72,6 +106,14 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        cellToDeSelect.contentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+            
+            cellToDeSelect.contentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        }, completion: nil)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         let item = MenuOptions.allCases[indexPath.row]
         delegate?.didSelect(menuItem: item)

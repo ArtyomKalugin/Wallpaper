@@ -212,27 +212,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a2B-XV-Qb7">
-                                <rect key="frame" x="0.0" y="94" width="390" height="716"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3t-4x-plE">
-                                <rect key="frame" x="16" y="44" width="42" height="38"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="backButtonAction:" destination="cXs-lv-NBU" eventType="touchUpInside" id="NQ2-0G-UZa"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvO-60-ID9">
-                                <rect key="frame" x="0.0" y="730" width="390" height="80"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0a-KD-fUu">
+                                <rect key="frame" x="16" y="60" width="42" height="42"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-DQ-5gu">
-                                        <rect key="frame" x="147" y="21.666666666666629" width="96" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3t-4x-plE">
+                                        <rect key="frame" x="0.0" y="2" width="42" height="38"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Скачать">
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="cXs-lv-NBU" eventType="touchUpInside" id="NQ2-0G-UZa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.55885948129251706" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="L3t-4x-plE" secondAttribute="trailing" id="YnV-Yi-gBP"/>
+                                    <constraint firstItem="L3t-4x-plE" firstAttribute="leading" secondItem="y0a-KD-fUu" secondAttribute="leading" id="iNu-YH-5Jb"/>
+                                    <constraint firstItem="L3t-4x-plE" firstAttribute="top" secondItem="y0a-KD-fUu" secondAttribute="top" constant="2" id="s3l-tc-6XU"/>
+                                    <constraint firstAttribute="bottom" secondItem="L3t-4x-plE" secondAttribute="bottom" constant="2" id="usU-UJ-8XT"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1U4-jX-7cu">
+                                <rect key="frame" x="174" y="742" width="42" height="42"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-DQ-5gu">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system" title="">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                                             <fontDescription key="titleFontDescription" type="system" pointSize="19"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -240,26 +253,31 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.13518846649484539" green="0.13518846649484539" blue="0.13518846649484539" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="0.5099914965986394" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="fgv-DQ-5gu" firstAttribute="centerY" secondItem="IvO-60-ID9" secondAttribute="centerY" id="L8Y-Pd-0BW"/>
-                                    <constraint firstItem="fgv-DQ-5gu" firstAttribute="centerX" secondItem="IvO-60-ID9" secondAttribute="centerX" id="fos-8G-GaB"/>
+                                    <constraint firstAttribute="trailing" secondItem="fgv-DQ-5gu" secondAttribute="trailing" id="2r8-Qk-2La"/>
+                                    <constraint firstItem="fgv-DQ-5gu" firstAttribute="leading" secondItem="1U4-jX-7cu" secondAttribute="leading" id="FIs-vV-JZf"/>
+                                    <constraint firstAttribute="bottom" secondItem="fgv-DQ-5gu" secondAttribute="bottom" id="IiH-Yf-uPY"/>
+                                    <constraint firstItem="fgv-DQ-5gu" firstAttribute="top" secondItem="1U4-jX-7cu" secondAttribute="top" id="z5X-eE-drg"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cvu-FB-afH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="IvO-60-ID9" firstAttribute="bottom" secondItem="cvu-FB-afH" secondAttribute="bottom" id="0gn-ku-JiU"/>
-                            <constraint firstItem="IvO-60-ID9" firstAttribute="top" secondItem="cvu-FB-afH" secondAttribute="top" constant="686" id="7jc-1b-eoG"/>
-                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="leading" secondItem="cvu-FB-afH" secondAttribute="leading" id="89S-3Q-54I"/>
-                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="top" secondItem="cvu-FB-afH" secondAttribute="top" constant="50" id="dhZ-53-OUB"/>
-                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="top" secondItem="L3t-4x-plE" secondAttribute="bottom" constant="12" id="fI2-9u-mJO"/>
-                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="trailing" secondItem="cvu-FB-afH" secondAttribute="trailing" id="fe2-PR-SDz"/>
-                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="bottom" secondItem="cvu-FB-afH" secondAttribute="bottom" id="ghJ-tb-OeX"/>
-                            <constraint firstItem="IvO-60-ID9" firstAttribute="trailing" secondItem="cvu-FB-afH" secondAttribute="trailing" id="m0E-j5-qz4"/>
-                            <constraint firstItem="IvO-60-ID9" firstAttribute="leading" secondItem="cvu-FB-afH" secondAttribute="leading" id="pHf-Lc-i5C"/>
-                            <constraint firstItem="L3t-4x-plE" firstAttribute="leading" secondItem="cvu-FB-afH" secondAttribute="leading" constant="16" id="s32-AZ-rc0"/>
+                            <constraint firstItem="cvu-FB-afH" firstAttribute="trailing" secondItem="y0a-KD-fUu" secondAttribute="trailing" constant="332" id="3gL-kN-KoF"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="trailing" secondItem="cvu-FB-afH" secondAttribute="trailing" id="60M-Fp-wL3"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="leading" secondItem="cvu-FB-afH" secondAttribute="leading" id="N0N-uC-0Q8"/>
+                            <constraint firstItem="y0a-KD-fUu" firstAttribute="leading" secondItem="f02-Ts-Cad" secondAttribute="leadingMargin" id="OGG-El-plq"/>
+                            <constraint firstItem="cvu-FB-afH" firstAttribute="bottom" secondItem="1U4-jX-7cu" secondAttribute="bottom" constant="26" id="RWl-3s-e9W"/>
+                            <constraint firstItem="y0a-KD-fUu" firstAttribute="top" secondItem="cvu-FB-afH" secondAttribute="top" constant="16" id="Rd0-hy-y0X"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="top" secondItem="y0a-KD-fUu" secondAttribute="bottom" constant="-58" id="ZYz-jy-aY5"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="leading" secondItem="y0a-KD-fUu" secondAttribute="trailing" constant="-58" id="ZrN-PQ-HAD"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="bottom" secondItem="cvu-FB-afH" secondAttribute="bottom" id="eDm-zg-dny"/>
+                            <constraint firstItem="1U4-jX-7cu" firstAttribute="leading" secondItem="a2B-XV-Qb7" secondAttribute="trailing" constant="-216" id="lYv-81-2IA"/>
+                            <constraint firstItem="cvu-FB-afH" firstAttribute="trailing" secondItem="1U4-jX-7cu" secondAttribute="trailing" constant="174" id="wr4-dz-lbf"/>
+                            <constraint firstItem="a2B-XV-Qb7" firstAttribute="top" secondItem="f02-Ts-Cad" secondAttribute="topMargin" id="yBV-aV-J5B"/>
+                            <constraint firstItem="1U4-jX-7cu" firstAttribute="top" secondItem="a2B-XV-Qb7" secondAttribute="bottom" constant="-68" id="zsu-h2-LID"/>
                         </constraints>
                     </view>
                     <connections>
@@ -296,6 +314,7 @@
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -36,7 +36,7 @@ class DetailImageViewController: UIViewController {
     // private functions
     private func configure() {
         let url = URL(string: (wallpaperImage?.fullUrl)!)
-        
+        print(wallpaperImage?.fullUrl)
         if let data = try? Data(contentsOf: url!) {
             let image = UIImage(data: data)
             imageView.image = image

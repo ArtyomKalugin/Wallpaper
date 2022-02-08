@@ -183,7 +183,7 @@ extension MainScreenViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         
-        if (position > (scrollView.contentSize.height - scrollView.frame.size.height)) && !isLoading {
+        if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 200)) && !isLoading {
             isLoading = true
             page += 1
             loadImages()
