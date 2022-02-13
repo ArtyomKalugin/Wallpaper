@@ -32,7 +32,9 @@ class MainScreenViewController: UIViewController {
     private var isLoading = false
     private var photos: [UIImage?] = []
     private var spinner = UIView()
+    private var condition = 0
     
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -45,6 +47,7 @@ class MainScreenViewController: UIViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        congirureGestureRecognizer()
     }
     
     // private functions
@@ -58,6 +61,17 @@ class MainScreenViewController: UIViewController {
         
         searchingImage = StringHelper.convertToAPIString(string: request)
         loadImages()
+    }
+    
+    private func congirureGestureRecognizer() {
+        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(sender:)))
+        swipeRightRecognizer.direction = .right
+        
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(sender:)))
+        swipeLeftRecognizer.direction = .left
+        
+        view.addGestureRecognizer(swipeRightRecognizer)
+        view.addGestureRecognizer(swipeLeftRecognizer)
     }
     
     private func configureCollectionView() {
@@ -76,6 +90,7 @@ class MainScreenViewController: UIViewController {
     }
     
     private func loadImages() {
+        spinner.removeFromSuperview()
         spinner = createSpinnerFooter()
         
         DispatchQueue.main.async {
@@ -124,6 +139,28 @@ class MainScreenViewController: UIViewController {
         categoryLabel.text = russianCategory
         spinner.removeFromSuperview()
         makeRequest(request: category)
+    }
+    
+    // objc functions
+    @objc private func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
+        switch sender.direction {
+        case .left:
+            if condition == 1 {
+                delegate?.toggleMenu()
+                condition = 0
+            }
+            
+        
+        case .right:
+            if condition == 0 {
+                delegate?.toggleMenu()
+                condition = 1
+            }
+            
+        default:
+            print("wrong swipe")
+        }
+        
     }
 
     @IBAction func menuButtonAction(_ sender: UIButton) {

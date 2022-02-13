@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		921BC13827A5985A00B9E372 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921BC13727A5985A00B9E372 /* StringHelper.swift */; };
 		9229624F27A031F30036071A /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229624E27A031F30036071A /* DetailImageViewController.swift */; };
+		926489D527B829DF000EEB13 /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = 926489D427B829DF000EEB13 /* Purchases */; };
 		9276B04727A196F80091F52B /* AlertHelper .swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276B04627A196F80091F52B /* AlertHelper .swift */; };
 		92A7873827847EC600E24FD2 /* WallpaperImage .swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873727847EC600E24FD2 /* WallpaperImage .swift */; };
 		92A7873B27847FE900E24FD2 /* CodableConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7873A27847FE900E24FD2 /* CodableConverter.swift */; };
@@ -65,6 +66,7 @@
 				92CDE04627AAB16F00C52199 /* SDWebImage in Frameworks */,
 				92CDE04827AAB16F00C52199 /* SDWebImageMapKit in Frameworks */,
 				92E3B23D277F23C200A8D11F /* Alamofire in Frameworks */,
+				926489D527B829DF000EEB13 /* Purchases in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +209,7 @@
 				92E3B23C277F23C200A8D11F /* Alamofire */,
 				92CDE04527AAB16F00C52199 /* SDWebImage */,
 				92CDE04727AAB16F00C52199 /* SDWebImageMapKit */,
+				926489D427B829DF000EEB13 /* Purchases */,
 			);
 			productName = Wallpaper;
 			productReference = 92AA47E82775F1C900E0914F /* Wallpaper.app */;
@@ -239,6 +242,7 @@
 			packageReferences = (
 				92E3B23B277F23C200A8D11F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				92CDE04427AAB16F00C52199 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				926489D327B829DF000EEB13 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 92AA47E92775F1C900E0914F /* Products */;
 			projectDirPath = "";
@@ -435,6 +439,7 @@
 				DEVELOPMENT_TEAM = 258576KTZ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallpaper/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Необходимо разрешить приложению скачивать фотографии на ваше устройство!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -465,6 +470,7 @@
 				DEVELOPMENT_TEAM = 258576KTZ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallpaper/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Необходимо разрешить приложению скачивать фотографии на ваше устройство!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -509,6 +515,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		926489D327B829DF000EEB13 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		92CDE04427AAB16F00C52199 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -528,6 +542,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		926489D427B829DF000EEB13 /* Purchases */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 926489D327B829DF000EEB13 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = Purchases;
+		};
 		92CDE04527AAB16F00C52199 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 92CDE04427AAB16F00C52199 /* XCRemoteSwiftPackageReference "SDWebImage" */;
