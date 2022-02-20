@@ -30,6 +30,8 @@
 		92E3B237277F09B900A8D11F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3B236277F09B900A8D11F /* NetworkService.swift */; };
 		92E3B23A277F1E1400A8D11F /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E3B239277F1E1300A8D11F /* Codable.swift */; };
 		92E3B23D277F23C200A8D11F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 92E3B23C277F23C200A8D11F /* Alamofire */; };
+		92E5A6E027C2C943001EAE67 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 92E5A6DF27C2C943001EAE67 /* StoreKitTestCertificate.cer */; };
+		92E5A6E327C2CB1B001EAE67 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E5A6E227C2CB1B001EAE67 /* PurchaseViewController.swift */; };
 		92F074DF279F05DC00FBA47C /* SearchingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F074DE279F05DC00FBA47C /* SearchingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,9 @@
 		92DC158A2781B8CC00D8D24F /* SearchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingViewController.swift; sourceTree = "<group>"; };
 		92E3B236277F09B900A8D11F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		92E3B239277F1E1300A8D11F /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		92E5A6DE27C2C756001EAE67 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		92E5A6DF27C2C943001EAE67 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../../StoreKitTestCertificate.cer; sourceTree = "<group>"; };
+		92E5A6E227C2CB1B001EAE67 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		92F074DE279F05DC00FBA47C /* SearchingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +126,8 @@
 				92AA47F92775F1CB00E0914F /* LaunchScreen.storyboard */,
 				92AA47FC2775F1CB00E0914F /* Info.plist */,
 				92AA47F42775F1C900E0914F /* Wallpaper.xcdatamodeld */,
+				92E5A6DE27C2C756001EAE67 /* Configuration.storekit */,
+				92E5A6DF27C2C943001EAE67 /* StoreKitTestCertificate.cer */,
 			);
 			path = Wallpaper;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 		92AA48022775FE4900E0914F /* Presentation  */ = {
 			isa = PBXGroup;
 			children = (
+				92E5A6E127C2CAF8001EAE67 /* Purchase Presentation  */,
 				9229624D27A031CB0036071A /* Detail Presentation  */,
 				92DC15892781B8A800D8D24F /* Searching Presentation  */,
 				92AA48062775FF3F00E0914F /* Menu Presentation  */,
@@ -187,6 +195,14 @@
 				92CDE04927AAB67F00C52199 /* UserDevice.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		92E5A6E127C2CAF8001EAE67 /* Purchase Presentation  */ = {
+			isa = PBXGroup;
+			children = (
+				92E5A6E227C2CB1B001EAE67 /* PurchaseViewController.swift */,
+			);
+			path = "Purchase Presentation ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +277,7 @@
 				92AA47FB2775F1CB00E0914F /* LaunchScreen.storyboard in Resources */,
 				92AA47F82775F1CB00E0914F /* Assets.xcassets in Resources */,
 				92AA47F32775F1C900E0914F /* Main.storyboard in Resources */,
+				92E5A6E027C2C943001EAE67 /* StoreKitTestCertificate.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +299,7 @@
 				92AA47EC2775F1C900E0914F /* AppDelegate.swift in Sources */,
 				92CDE04A27AAB67F00C52199 /* UserDevice.swift in Sources */,
 				92A7873B27847FE900E24FD2 /* CodableConverter.swift in Sources */,
+				92E5A6E327C2CB1B001EAE67 /* PurchaseViewController.swift in Sources */,
 				9229624F27A031F30036071A /* DetailImageViewController.swift in Sources */,
 				92AA48082775FF5200E0914F /* ContainerViewController.swift in Sources */,
 				92AA47F62775F1C900E0914F /* Wallpaper.xcdatamodeld in Sources */,

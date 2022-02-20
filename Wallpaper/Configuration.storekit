@@ -1,0 +1,54 @@
+{
+  "identifier" : "5D5CE2DF",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "46A50D0D",
+      "localizations" : [
+
+      ],
+      "name" : "Premium ",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "269",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "E0D6B527",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Доступ ко всем функциям приложения на месяц ",
+              "displayName" : "Премиум на месяц ",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "wallpaper_200_1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Доступ ко всем функциям приложения на месяц ",
+          "subscriptionGroupID" : "46A50D0D",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

@@ -24,6 +24,7 @@ class SearchingViewController: UIViewController {
     private var searchingImage: String?
     private var isLoading = false
     private var photos: [UIImage?] = []
+    private var spinner = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,10 +70,11 @@ class SearchingViewController: UIViewController {
     }
     
     private func loadImages() {
-        let spinner = createSpinnerFooter()
+        spinner.removeFromSuperview()
+        spinner = createSpinnerFooter()
         
         DispatchQueue.main.async {
-            self.view.addSubview(spinner)
+            self.view.addSubview(self.spinner)
         }
         
         networkService.loadImages(searchingImage: searchingImage!, page: page) { [weak self] response, error in
@@ -98,7 +100,7 @@ class SearchingViewController: UIViewController {
                         self?.collectionView.reloadData()
                     }
                     
-                    spinner.removeFromSuperview()
+                    self?.spinner.removeFromSuperview()
                 }
                 
                 self?.isLoading = false
@@ -106,7 +108,7 @@ class SearchingViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.showAlert(title: NSLocalizedString("Ошибка", comment: ""), body: NSLocalizedString("По вашему запросу ничего не найдено!", comment: ""), button: "ОК", actions: nil)
                     
-                    spinner.removeFromSuperview()
+                    self?.spinner.removeFromSuperview()
                 }
             }
         }

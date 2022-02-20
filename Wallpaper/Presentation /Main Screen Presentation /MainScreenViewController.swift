@@ -120,7 +120,7 @@ class MainScreenViewController: UIViewController {
                         self?.collectionView.reloadData()
                     }
                     
-                    self!.spinner.removeFromSuperview()
+                    self?.spinner.removeFromSuperview()
                 }
                 
                 self?.isLoading = false
@@ -128,7 +128,7 @@ class MainScreenViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.showAlert(title: NSLocalizedString("Ошибка", comment: ""), body: NSLocalizedString("По вашему запросу ничего не найдено!", comment: ""), button: "ОК", actions: nil)
                     
-                    self!.spinner.removeFromSuperview()
+                    self?.spinner.removeFromSuperview()
                 }
             }
         }
@@ -220,7 +220,7 @@ extension MainScreenViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         
-        if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 200)) && !isLoading {
+        if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 300)) && !isLoading {
             isLoading = true
             page += 1
             loadImages()

@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -281,6 +282,79 @@
             </objects>
             <point key="canvasLocation" x="1661.5384615384614" y="83.886255924170612"/>
         </scene>
+        <!--Purchase View Controller-->
+        <scene sceneID="pyA-8y-oq9">
+            <objects>
+                <viewController restorationIdentifier="PurchaseViewController" storyboardIdentifier="PurchaseViewController" id="jRU-y6-N1L" customClass="PurchaseViewController" customModule="Wallpaper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IrY-rG-chP">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRu-UZ-Nn2">
+                                <rect key="frame" x="20" y="44" width="42" height="38"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="jRU-y6-N1L" eventType="touchUpInside" id="hqo-GX-pLF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Получите доступ ко всем функциям приложения " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7a-WX-aRQ">
+                                <rect key="frame" x="70" y="144" width="288" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjs-uW-Zdo">
+                                <rect key="frame" x="150" y="228" width="128" height="654"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="269 ₽ " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fox-k1-pLL">
+                                        <rect key="frame" x="19" y="8" width="91" height="36"/>
+                                        <color key="tintColor" red="0.95686274770000002" green="0.73333334920000004" blue="0.39607840779999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <color key="textColor" red="0.95686274770000002" green="0.73333334920000004" blue="0.39607840779999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="highlightedColor" red="0.95686274770000002" green="0.73333334920000004" blue="0.39607840779999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЗА МЕСЯЦ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21R-5l-t0e">
+                                        <rect key="frame" x="25" y="44" width="78" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.28838845930000001" green="0.30611741149999999" blue="0.33276144990000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="21R-5l-t0e" firstAttribute="leading" secondItem="qjs-uW-Zdo" secondAttribute="leading" constant="25" id="4rS-cJ-GI1"/>
+                                    <constraint firstItem="21R-5l-t0e" firstAttribute="top" secondItem="fox-k1-pLL" secondAttribute="bottom" id="MBL-3R-rYY"/>
+                                    <constraint firstItem="fox-k1-pLL" firstAttribute="leading" secondItem="qjs-uW-Zdo" secondAttribute="leading" constant="19" id="N1O-SP-Wxb"/>
+                                    <constraint firstItem="fox-k1-pLL" firstAttribute="top" secondItem="qjs-uW-Zdo" secondAttribute="top" constant="8" id="O2n-Iz-MGi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0dp-7A-k2f"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qjs-uW-Zdo" firstAttribute="leading" secondItem="0dp-7A-k2f" secondAttribute="leading" constant="150" id="6aR-cg-qDJ"/>
+                            <constraint firstItem="0dp-7A-k2f" firstAttribute="bottom" secondItem="qjs-uW-Zdo" secondAttribute="bottom" constant="10" id="Eca-vb-sQW"/>
+                            <constraint firstItem="kRu-UZ-Nn2" firstAttribute="leading" secondItem="0dp-7A-k2f" secondAttribute="leading" constant="20" id="KJg-PK-Lx1"/>
+                            <constraint firstItem="kRu-UZ-Nn2" firstAttribute="top" secondItem="0dp-7A-k2f" secondAttribute="top" id="RSf-hX-wvp"/>
+                            <constraint firstItem="M7a-WX-aRQ" firstAttribute="top" secondItem="0dp-7A-k2f" secondAttribute="top" constant="100" id="dkC-qE-MWP"/>
+                            <constraint firstItem="qjs-uW-Zdo" firstAttribute="top" secondItem="M7a-WX-aRQ" secondAttribute="bottom" constant="29" id="fic-rR-yrt"/>
+                            <constraint firstItem="0dp-7A-k2f" firstAttribute="trailing" secondItem="qjs-uW-Zdo" secondAttribute="trailing" constant="150" id="ggx-nA-E8i"/>
+                            <constraint firstItem="M7a-WX-aRQ" firstAttribute="leading" secondItem="0dp-7A-k2f" secondAttribute="leading" constant="70" id="l37-B8-Pz9"/>
+                            <constraint firstItem="0dp-7A-k2f" firstAttribute="trailing" secondItem="M7a-WX-aRQ" secondAttribute="trailing" constant="70" id="zHc-5r-BtA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="qjs-uW-Zdo" id="vv7-PL-QOH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="frb-Ls-SRS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2500.934579439252" y="83.585313174946009"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="js8-FF-zq6">
             <objects>
@@ -307,6 +381,9 @@
         <image name="icons8-меню-30" width="30" height="30"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
+        <namedColor name="AccentColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
