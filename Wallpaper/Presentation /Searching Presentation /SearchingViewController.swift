@@ -8,12 +8,14 @@
 import UIKit
 
 class SearchingViewController: UIViewController {
+    
+    // Outlet properties
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var searchingTextField: UITextField!
     @IBOutlet weak var searchLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // private properties
+    // Private properties
     private var images: [WallpaperImage] = []
     private let converter: CodableConverter = CodableConverter()
     private let networkService: NetworkService = NetworkService()
@@ -26,6 +28,7 @@ class SearchingViewController: UIViewController {
     private var photos: [UIImage?] = []
     private var spinner = UIView()
     
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,11 +42,12 @@ class SearchingViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    // MARK: - Button actions
     @IBAction func backButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    // private functions
+    // Private functions
     private func configureCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -124,7 +128,7 @@ class SearchingViewController: UIViewController {
         return footerView
     }
     
-    // objc functions
+    // Objc functions
     @objc private func hideKeyboard() {
         self.view.endEditing(true)
     }
@@ -176,7 +180,7 @@ class SearchingViewController: UIViewController {
     }
 }
 
-// MARK:- UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 extension SearchingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -193,17 +197,16 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        DispatchQueue.main.async { [self] in
+        DispatchQueue.main.async { [weak self] in
             collectionView.deselectItem(at: indexPath, animated: true)
             
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
             viewController.modalPresentationStyle = .fullScreen
-            viewController.wallpaperImage = images[indexPath.row]
+            viewController.wallpaperImage = self?.images[indexPath.row]
             
-            present(viewController, animated: true, completion: nil)
+            self?.present(viewController, animated: true, completion: nil)
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -215,7 +218,7 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
     }
 }
 
-// MARK:- UIScrollViewDelegate
+// MARK: - UIScrollViewDelegate
 extension SearchingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y

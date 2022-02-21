@@ -9,7 +9,7 @@ import Foundation
 
 class StringHelper {
     
-    // public functions
+    // Public functions
     public static func convertToAPIString(string: String) -> String {
         let stringArray: [String] = string.components(separatedBy: " ")
        

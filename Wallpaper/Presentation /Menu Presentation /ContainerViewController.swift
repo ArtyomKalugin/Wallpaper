@@ -9,16 +9,18 @@ import UIKit
 
 class ContainerViewController: UIViewController {
     
+    // Enums
     enum MenuState {
         case opened
         case closed
     }
     
-    // private properties
+    // Private properties
     private var menuState: MenuState = .closed
     private let menuViewController = MenuViewController()
     private var mainScreenViewController = MainScreenViewController()
     
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +28,7 @@ class ContainerViewController: UIViewController {
         addMainScreen()
     }
     
-    // private functions
+    // Private functions
     private func addMenuScreen() {
         menuViewController.delegate = self
         addChild(menuViewController)
@@ -55,6 +57,7 @@ extension ContainerViewController: MainScreenViewControllerDelegate {
             } completion: { [weak self] done in
                 if done {
                     self?.menuState = .opened
+                    self?.mainScreenViewController.condition = 1
                 }
             }
 
@@ -65,6 +68,7 @@ extension ContainerViewController: MainScreenViewControllerDelegate {
             } completion: { [weak self] done in
                 if done {
                     self?.menuState = .closed
+                    self?.mainScreenViewController.condition = 0
                 }
             }
         }

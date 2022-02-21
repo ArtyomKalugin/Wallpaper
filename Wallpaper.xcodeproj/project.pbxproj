@@ -36,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		920C6BA827C3753E00D2A612 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		921BC13727A5985A00B9E372 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		9229624E27A031F30036071A /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
 		9276B04627A196F80091F52B /* AlertHelper .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertHelper .swift"; sourceTree = "<group>"; };
@@ -78,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		920C6BA727C3751E00D2A612 /* Resource  */ = {
+			isa = PBXGroup;
+			children = (
+				92AA47F72775F1CB00E0914F /* Assets.xcassets */,
+				92AA47F92775F1CB00E0914F /* LaunchScreen.storyboard */,
+			);
+			path = "Resource ";
+			sourceTree = "<group>";
+		};
 		9229624D27A031CB0036071A /* Detail Presentation  */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,17 +125,17 @@
 		92AA47EA2775F1C900E0914F /* Wallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				92AA47EB2775F1C900E0914F /* AppDelegate.swift */,
+				92AA47ED2775F1C900E0914F /* SceneDelegate.swift */,
+				92AA47FC2775F1CB00E0914F /* Info.plist */,
+				920C6BA727C3751E00D2A612 /* Resource  */,
 				92A7873927847FC200E24FD2 /* Helpers */,
 				92E3B238277F1E0300A8D11F /* Models */,
 				92E3B234277F099C00A8D11F /* Services */,
 				92AA48022775FE4900E0914F /* Presentation  */,
-				92AA47EB2775F1C900E0914F /* AppDelegate.swift */,
-				92AA47ED2775F1C900E0914F /* SceneDelegate.swift */,
 				92AA47F12775F1C900E0914F /* Main.storyboard */,
-				92AA47F72775F1CB00E0914F /* Assets.xcassets */,
-				92AA47F92775F1CB00E0914F /* LaunchScreen.storyboard */,
-				92AA47FC2775F1CB00E0914F /* Info.plist */,
 				92AA47F42775F1C900E0914F /* Wallpaper.xcdatamodeld */,
+				920C6BA827C3753E00D2A612 /* StoreKitTestCertificate.cer */,
 				92E5A6DE27C2C756001EAE67 /* Configuration.storekit */,
 				92E5A6DF27C2C943001EAE67 /* StoreKitTestCertificate.cer */,
 			);

@@ -7,17 +7,20 @@
 
 import UIKit
 
+// MARK: - MenuViewControllerProtocol
 protocol MenuViewControllerDelegate: AnyObject {
     func didSelect(menuItem: MenuViewController.MenuOptions)
 }
 
 class MenuViewController: UIViewController {
     
-    weak var delegate: MenuViewControllerDelegate?
+    // Public properties
+    public weak var delegate: MenuViewControllerDelegate?
     
+    // Enums
     enum MenuOptions: String, CaseIterable {
         case popular = "Популярное wallpaper"
-        case threed = "3D 3D"
+        case threed = "3D 3D+wallpaper"
         case abstraction = "Абстракция abstraction"
         case anime = "Аниме anime"
         case art = "Арт art"
@@ -33,7 +36,7 @@ class MenuViewController: UIViewController {
         case love = "Любовь love"
         case macro = "Макро macro"
         case cars = "Машины cars"
-        case minimalism = "Минимализм minimalism"
+        case minimalism = "Минимализм minimalism+wallpaper"
         case motorcycles = "Мотоциклы motorcycles"
         case men = "Мужчины men"
         case music = "Музыка music"
@@ -53,7 +56,8 @@ class MenuViewController: UIViewController {
         case flowers = "Цветы flowers"
         case black = "Черный black"
     }
-
+    
+    // Private properties
     private let tableView: UITableView = {
         let table = UITableView()
         table.backgroundColor = nil
@@ -61,6 +65,7 @@ class MenuViewController: UIViewController {
         return table
     }()
     
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,6 +78,7 @@ class MenuViewController: UIViewController {
         configureTableView()
     }
     
+    // Private functions 
     private func configureTableView() {
         tableView.frame = CGRect(x: 0, y: view.safeAreaInsets.top , width: view.bounds.size.width, height: view.bounds.size.height)
     }

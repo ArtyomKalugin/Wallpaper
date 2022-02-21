@@ -8,19 +8,22 @@
 import UIKit
 import SDWebImage
 
+// MARK: - MainScreenViewControllerDelegate
 protocol MainScreenViewControllerDelegate: AnyObject {
     func toggleMenu()
 }
 
 class MainScreenViewController: UIViewController {
-    // outlets 
+    
+    // Outlet properties
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // public properties
+    // Public properties
     public weak var delegate: MainScreenViewControllerDelegate?
+    public var condition = 0
     
-    // private properties
+    // Private properties
     private var images: [WallpaperImage] = []
     private let converter: CodableConverter = CodableConverter()
     private let networkService: NetworkService = NetworkService()
@@ -32,9 +35,8 @@ class MainScreenViewController: UIViewController {
     private var isLoading = false
     private var photos: [UIImage?] = []
     private var spinner = UIView()
-    private var condition = 0
     
-
+    // MARK: - View life cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -50,7 +52,7 @@ class MainScreenViewController: UIViewController {
         congirureGestureRecognizer()
     }
     
-    // private functions
+    // Private functions
     private func makeRequest(request: String) {
         images = []
         photos = []
@@ -134,14 +136,14 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    // public functions
+    // Public functions
     public func changeCategory(category: String, russianCategory: String) {
         categoryLabel.text = russianCategory
         spinner.removeFromSuperview()
         makeRequest(request: category)
     }
     
-    // objc functions
+    // Objc functions
     @objc private func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
         switch sender.direction {
         case .left:
@@ -149,8 +151,6 @@ class MainScreenViewController: UIViewController {
                 delegate?.toggleMenu()
                 condition = 0
             }
-            
-        
         case .right:
             if condition == 0 {
                 delegate?.toggleMenu()
@@ -162,9 +162,16 @@ class MainScreenViewController: UIViewController {
         }
         
     }
-
+    
+    // MARK: - Button actions 
     @IBAction func menuButtonAction(_ sender: UIButton) {
         delegate?.toggleMenu()
+        
+        if condition == 0 {
+            condition = 1
+        } else {
+            condition = 0
+        }
     }
     
     @IBAction func searchButtonAction(_ sender: Any) {
@@ -176,7 +183,7 @@ class MainScreenViewController: UIViewController {
     }
 }
 
-// MARK:- UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 extension MainScreenViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -203,7 +210,6 @@ extension MainScreenViewController: UICollectionViewDataSource, UICollectionView
             
             self?.present(viewController, animated: true, completion: nil)
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -215,7 +221,7 @@ extension MainScreenViewController: UICollectionViewDataSource, UICollectionView
     }
 }
 
-// MARK:- UIScrollViewDelegate
+// MARK: - UIScrollViewDelegate
 extension MainScreenViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y

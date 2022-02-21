@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkService {
-    // private properties
+    // Private properties
     private let configuration = URLSessionConfiguration.default
     private let decoder = JSONDecoder()
     private let baseUrl: String = "https://pixabay.com/api/?lang=ru&safesearch=true&orientation=vertical&key="

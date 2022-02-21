@@ -8,6 +8,8 @@
 import Foundation
 
 class CodableConverter {
+    
+    // Public functions
     public func convertToImage(hit: HitCodable) -> WallpaperImage {
         let favorites: Int = hit.favorites ?? 0
         let likes: Int = hit.likes ?? 0
