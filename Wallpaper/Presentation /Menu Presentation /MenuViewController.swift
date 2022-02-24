@@ -36,7 +36,7 @@ class MenuViewController: UIViewController {
         case love = "Любовь love"
         case macro = "Макро macro"
         case cars = "Машины cars"
-        case minimalism = "Минимализм minimalism+wallpaper"
+        case minimalism = "Минимализм minimalism"
         case motorcycles = "Мотоциклы motorcycles"
         case men = "Мужчины men"
         case music = "Музыка music"
