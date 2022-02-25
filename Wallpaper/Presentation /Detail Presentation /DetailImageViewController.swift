@@ -30,31 +30,31 @@ class DetailImageViewController: UIViewController {
     }
     
     @IBAction func downloadButtonAction(_ sender: Any) {
-//        Purchases.shared.purchaserInfo { info, error in
-//            guard let info = info, error == nil else { return }
-//
-//            if info.entitlements["allaccess"]?.isActive == true {
-//
-//                if let image = self.imageView.image {
-//                    UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.savingCompleted(image:error:contextInfo:)), nil)
-//                } else {
-//                    self.downloadButton.isEnabled = false
-//                }
-//
-//            } else {
-//                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                guard let viewController = storyboard.instantiateViewController(withIdentifier:  "PurchaseViewController") as? PurchaseViewController else { return }
-//                viewController.modalPresentationStyle = .fullScreen
-//
-//                self.present(viewController, animated: true, completion: nil)
-//            }
-//        }
-        
-        if let image = imageView.image {
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(savingCompleted(image:error:contextInfo:)), nil)
-        } else {
-            downloadButton.isEnabled = false
+        Purchases.shared.purchaserInfo { info, error in
+            guard let info = info, error == nil else { return }
+
+            if info.entitlements["allaccess"]?.isActive == true {
+
+                if let image = self.imageView.image {
+                    UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.savingCompleted(image:error:contextInfo:)), nil)
+                } else {
+                    self.downloadButton.isEnabled = false
+                }
+
+            } else {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let viewController = storyboard.instantiateViewController(withIdentifier:  "PurchaseViewController") as? PurchaseViewController else { return }
+                viewController.modalPresentationStyle = .fullScreen
+
+                self.present(viewController, animated: true, completion: nil)
+            }
         }
+        
+//        if let image = imageView.image {
+//            UIImageWriteToSavedPhotosAlbum(image, self, #selector(savingCompleted(image:error:contextInfo:)), nil)
+//        } else {
+//            downloadButton.isEnabled = false
+//        }
     }
     
     // Private functions

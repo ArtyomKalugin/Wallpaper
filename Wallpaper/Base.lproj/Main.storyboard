@@ -377,6 +377,17 @@
                                     <action selector="resctoreButtonAction:" destination="jRU-y6-N1L" eventType="touchUpInside" id="Cml-as-ta8"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Политика конфиденциальности" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BaP-4I-D4X">
+                                <rect key="frame" x="94" y="839.33333333333337" width="240" height="32.666666666666629"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32.666666666666629" id="JJp-qn-O0o"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0dp-7A-k2f"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -385,8 +396,10 @@
                             <constraint firstItem="WwB-DX-qqn" firstAttribute="top" secondItem="jdk-nI-83O" secondAttribute="bottom" constant="16.333333333333371" id="38r-cO-lVs"/>
                             <constraint firstItem="M7a-WX-aRQ" firstAttribute="top" secondItem="LdU-Ts-40z" secondAttribute="bottom" constant="10" id="5WA-Yl-xT3"/>
                             <constraint firstItem="LdU-Ts-40z" firstAttribute="height" secondItem="IrY-rG-chP" secondAttribute="height" multiplier="0.0219582" constant="50" id="6da-pd-GLN"/>
+                            <constraint firstItem="BaP-4I-D4X" firstAttribute="leading" secondItem="0dp-7A-k2f" secondAttribute="leading" constant="94" id="77g-cz-csc"/>
                             <constraint firstItem="WwB-DX-qqn" firstAttribute="leading" secondItem="0dp-7A-k2f" secondAttribute="leading" constant="40" id="8U8-ad-eZT"/>
                             <constraint firstItem="0dp-7A-k2f" firstAttribute="trailing" secondItem="WwB-DX-qqn" secondAttribute="trailing" constant="40" id="EPz-qT-r1y"/>
+                            <constraint firstItem="BaP-4I-D4X" firstAttribute="centerX" secondItem="0dp-7A-k2f" secondAttribute="centerX" id="F9X-45-gZB"/>
                             <constraint firstItem="Lmi-zV-KgG" firstAttribute="top" secondItem="qjs-uW-Zdo" secondAttribute="bottom" constant="17.333333333333371" id="G6U-Yu-LoK"/>
                             <constraint firstItem="qjs-uW-Zdo" firstAttribute="height" secondItem="IrY-rG-chP" secondAttribute="height" multiplier="0.0799136" constant="50" id="G8q-kJ-6it"/>
                             <constraint firstItem="M7a-WX-aRQ" firstAttribute="centerX" secondItem="0dp-7A-k2f" secondAttribute="centerX" id="HSw-UO-T4M"/>
@@ -394,6 +407,7 @@
                             <constraint firstItem="kRu-UZ-Nn2" firstAttribute="leading" secondItem="0dp-7A-k2f" secondAttribute="leading" constant="20" id="KJg-PK-Lx1"/>
                             <constraint firstItem="0dp-7A-k2f" firstAttribute="trailing" secondItem="FMB-DT-GzP" secondAttribute="trailing" constant="67" id="KKq-qL-6LR"/>
                             <constraint firstItem="0dp-7A-k2f" firstAttribute="trailing" secondItem="Lmi-zV-KgG" secondAttribute="trailing" constant="40" id="Oau-8u-BCF"/>
+                            <constraint firstItem="0dp-7A-k2f" firstAttribute="bottom" secondItem="BaP-4I-D4X" secondAttribute="bottom" constant="20" id="R6Q-oy-uET"/>
                             <constraint firstItem="kRu-UZ-Nn2" firstAttribute="top" secondItem="0dp-7A-k2f" secondAttribute="top" id="RSf-hX-wvp"/>
                             <constraint firstItem="Lmi-zV-KgG" firstAttribute="leading" secondItem="0dp-7A-k2f" secondAttribute="leading" constant="40" id="UCO-Fq-IZf"/>
                             <constraint firstItem="FMB-DT-GzP" firstAttribute="top" secondItem="Lmi-zV-KgG" secondAttribute="bottom" constant="20" id="Xo6-Zs-cxH"/>
@@ -412,6 +426,7 @@
                     <connections>
                         <outlet property="buyButton" destination="Lmi-zV-KgG" id="QKX-Bd-qT4"/>
                         <outlet property="containerView" destination="qjs-uW-Zdo" id="vv7-PL-QOH"/>
+                        <outlet property="privacyTextView" destination="BaP-4I-D4X" id="hI0-Po-1PS"/>
                         <outlet property="restoreButton" destination="FMB-DT-GzP" id="hE4-AO-una"/>
                     </connections>
                 </viewController>
@@ -449,6 +464,9 @@
         <namedColor name="AccentColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
