@@ -19,6 +19,7 @@ class MenuViewController: UIViewController {
     
     // Enums
     enum MenuOptions: String, CaseIterable {
+        case termsOfUse = "Условия использования"
         case popular = "Популярное wallpaper"
         case threed = "3D 3D+wallpaper"
         case abstraction = "Абстракция abstraction"
@@ -104,6 +105,13 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let stringArray: [String] = MenuOptions.allCases[indexPath.row].rawValue.components(separatedBy: " ")
         cell.textLabel?.text = stringArray[0]
+        
+        if stringArray[0] == "Условия" {
+            cell.textLabel?.text = stringArray[0] + " " + stringArray[1]
+        } else {
+            cell.textLabel?.text = stringArray[0]
+        }
+        
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         cell.contentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
@@ -122,7 +130,14 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let item = MenuOptions.allCases[indexPath.row]
-        delegate?.didSelect(menuItem: item)
+        
+        if indexPath.row == 0 {
+            if let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else {
+            delegate?.didSelect(menuItem: item)
+        }
     }
 }
 
