@@ -21,17 +21,12 @@
           "adHocOffers" : [
 
           ],
-          "displayPrice" : "269",
+          "displayPrice" : "2.99",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "E0D6B527",
           "introductoryOffer" : null,
           "localizations" : [
-            {
-              "description" : "",
-              "displayName" : "",
-              "locale" : "en_US"
-            },
             {
               "description" : "Доступ ко всем функциям приложения на месяц ",
               "displayName" : "Премиум на месяц ",
@@ -41,6 +36,28 @@
           "productID" : "wallpaper_200_1m",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Доступ ко всем функциям приложения на месяц ",
+          "subscriptionGroupID" : "46A50D0D",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "3030A091",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Доступ ко всем функциям приложения на год",
+              "displayName" : "Премиум на год",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "wallpaper_1000_1y",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Доступ ко всем функциям приложения на год",
           "subscriptionGroupID" : "46A50D0D",
           "type" : "RecurringSubscription"
         }
