@@ -81,7 +81,7 @@ class PurchaseViewController: UIViewController {
         restoreButton.layer.cornerRadius = 10
         restoreButton.clipsToBounds = true
         
-        let attributedString = NSMutableAttributedString(string: "Политика конфиденциальности")
+        let attributedString = NSMutableAttributedString(string: "Privacy policy")
         let url = URL(string: "https://docs.google.com/document/d/1jpApSDJ9pONmiOO2zAQKF5mwo5hZpG6U-80sQatP_T4/edit?usp=sharing")!
         attributedString.setAttributes([.link: url], range: NSMakeRange(0, attributedString.length))
         privacyTextView.attributedText = attributedString

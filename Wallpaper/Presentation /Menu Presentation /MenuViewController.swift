@@ -19,43 +19,43 @@ class MenuViewController: UIViewController {
     
     // Enums
     enum MenuOptions: String, CaseIterable {
-        case termsOfUse = "Условия использования"
-        case popular = "Популярное wallpaper"
+        case termsOfUse = "Terms of use"
+        case popular = "Popular wallpaper"
         case threed = "3D 3D+wallpaper"
-        case abstraction = "Абстракция abstraction"
-        case anime = "Аниме anime"
-        case art = "Арт art"
-        case white = "Белый white"
-        case vector = "Вектор vector"
-        case cities = "Города cities"
-        case women = "Девушки women"
-        case food = "Еда food"
-        case animals = "Животные animals"
-        case winter = "Зима winter"
-        case space = "Космос space"
-        case summer = "Лето summer"
-        case love = "Любовь love"
-        case macro = "Макро macro"
-        case cars = "Машины cars"
-        case minimalism = "Минимализм minimalism"
-        case motorcycles = "Мотоциклы motorcycles"
-        case men = "Мужчины men"
-        case music = "Музыка music"
-        case neon = "Неон neon"
-        case loneliness = "Одиночество loneliness"
-        case holidays = "Праздники holidays"
-        case nature = "Природа nature"
-        case other = "Разное other"
-        case words = "Слова words"
-        case smilies = "Смайлы smilies"
-        case sport = "Спорт sport"
-        case textures = "Текстуры textures"
-        case dark = "Темные dark"
-        case technologies = "Технологии technologies"
-        case fantasy = "Фэнтези fantasy"
-        case predators = "Хищники predators"
-        case flowers = "Цветы flowers"
-        case black = "Черный black"
+        case abstraction = "Abstraction abstraction"
+        case anime = "Anime anime"
+        case art = "Art art"
+        case white = "White white"
+        case vector = "Vector vector"
+        case cities = "Cities cities"
+        case women = "Women women"
+        case food = "Food food"
+        case animals = "Animals animals"
+        case winter = "Winter winter"
+        case space = "Space space"
+        case summer = "Summer summer"
+        case love = "Love love"
+        case macro = "Macro macro"
+        case cars = "Cars cars"
+        case minimalism = "Minimalism minimalism"
+        case motorcycles = "Motorcycle motorcycles"
+        case men = "Men men"
+        case music = "Music music"
+        case neon = "Neon neon"
+        case loneliness = "Loneliness loneliness"
+        case holidays = "Holidays holidays"
+        case nature = "Nature nature"
+        case other = "Other other"
+        case words = "Words words"
+        case smilies = "Smilies smilies"
+        case sport = "Sport sport"
+        case textures = "Textures textures"
+        case dark = "Dark dark"
+        case technologies = "Technologies technologies"
+        case fantasy = "Fantasy fantasy"
+        case predators = "Predators predators"
+        case flowers = "Flowers flowers"
+        case black = "Black black"
     }
     
     // Private properties
@@ -106,8 +106,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let stringArray: [String] = MenuOptions.allCases[indexPath.row].rawValue.components(separatedBy: " ")
         cell.textLabel?.text = stringArray[0]
         
-        if stringArray[0] == "Условия" {
-            cell.textLabel?.text = stringArray[0] + " " + stringArray[1]
+        if stringArray[0] == "Terms" {
+            cell.textLabel?.text = stringArray[0] + " " + stringArray[1] + " " + stringArray[2]
         } else {
             cell.textLabel?.text = stringArray[0]
         }
