@@ -25,7 +25,6 @@ class SearchingViewController: UIViewController {
     private var page = 1
     private var searchingImage: String?
     private var isLoading = false
-    private var photos: [UIImage?] = []
     private var spinner = UIView()
     
     // MARK: - View life cycle
@@ -82,39 +81,41 @@ class SearchingViewController: UIViewController {
         }
         
         networkService.loadImages(searchingImage: searchingImage!, page: page) { [weak self] response, error in
+            
             if let response = response {
                 
-                for hit in response.hits {
-                    guard let wallpaperImage: WallpaperImage = (self?.converter.convertToImage(hit: hit)) else {
-                        continue
-                    }
-                    self?.images.append(wallpaperImage)
+                if response.hits.count != 0 {
                     
-                    let url = URL(string: wallpaperImage.fullUrl)
-                    if let data = try? Data(contentsOf: url!) {
-                        let image = UIImage(data: data)
-                        self?.photos.append(image)
+                    for hit in response.hits {
+                        guard let wallpaperImage: WallpaperImage = (self?.converter.convertToImage(hit: hit)) else {
+                            continue
+                        }
+                        self?.images.append(wallpaperImage)
                     }
-                }
-                
-                DispatchQueue.main.async {
-                    if self?.images.count == 0 {
-                        self?.showAlert(title: NSLocalizedString("Ошибка", comment: ""), body: NSLocalizedString("По вашему запросу ничего не найдено!", comment: ""), button: "ОК", actions: nil)
-                    } else {
+                    
+                    DispatchQueue.main.async {
                         self?.collectionView.reloadData()
+                        self?.spinner.removeFromSuperview()
                     }
-                    
-                    self?.spinner.removeFromSuperview()
+                
+                    self?.isLoading = false
+        
+                } else {
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
+                        
+                        self?.spinner.removeFromSuperview()
+                    }
                 }
                 
-                self?.isLoading = false
             } else {
                 DispatchQueue.main.async {
-                    self?.showAlert(title: NSLocalizedString("Ошибка", comment: ""), body: NSLocalizedString("По вашему запросу ничего не найдено!", comment: ""), button: "ОК", actions: nil)
+                    self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
                     
                     self?.spinner.removeFromSuperview()
                 }
             }
+            
         }
     }
     
@@ -164,7 +165,6 @@ class SearchingViewController: UIViewController {
     
     @objc private func didTapSearch() {
         images = []
-        photos = []
         
         DispatchQueue.main.async { [weak self] in
             self?.collectionView.reloadData()
@@ -223,7 +223,7 @@ extension SearchingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         
-        if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 200)) && !isLoading {
+        if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 500)) && !isLoading {
             isLoading = true
             page += 1
             loadImages()

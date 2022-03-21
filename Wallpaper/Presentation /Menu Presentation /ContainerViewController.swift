@@ -48,7 +48,9 @@ class ContainerViewController: UIViewController {
 
 // MARK: - MainScreenViewControllerDelegate
 extension ContainerViewController: MainScreenViewControllerDelegate {
+    
     func toggleMenu() {
+        
         switch menuState {
         case .closed:
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8 , initialSpringVelocity: 0, options: .curveEaseInOut) {
@@ -80,7 +82,8 @@ extension ContainerViewController: MainScreenViewControllerDelegate {
 extension ContainerViewController: MenuViewControllerDelegate {
     func didSelect(menuItem: MenuViewController.MenuOptions) {
         let stringArray: [String] = menuItem.rawValue.components(separatedBy: " ")
-        mainScreenViewController.changeCategory(category: stringArray[1], russianCategory: stringArray[0])
+        
+        mainScreenViewController.changeCategory(category: stringArray[1...(stringArray.count - 1)].joined(separator: " "), russianCategory: stringArray[0])
         toggleMenu()
     }
 }

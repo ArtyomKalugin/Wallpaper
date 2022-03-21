@@ -21,12 +21,8 @@ class MenuViewController: UIViewController {
     enum MenuOptions: String, CaseIterable {
         case termsOfUse = "Terms of use"
         case popular = "Popular wallpaper"
-        case threed = "3D 3D+wallpaper"
-        case abstraction = "Abstraction abstraction"
-        case anime = "Anime anime"
         case art = "Art art"
         case white = "White white"
-        case vector = "Vector vector"
         case cities = "Cities cities"
         case women = "Women women"
         case food = "Food food"
@@ -37,7 +33,6 @@ class MenuViewController: UIViewController {
         case love = "Love love"
         case macro = "Macro macro"
         case cars = "Cars cars"
-        case minimalism = "Minimalism minimalism"
         case motorcycles = "Motorcycle motorcycles"
         case men = "Men men"
         case music = "Music music"
@@ -113,7 +108,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        cell.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         cell.contentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         
         return cell
