@@ -65,6 +65,8 @@ class DetailImageViewController: UIViewController {
             let image = UIImage(data: data)
             imageView.image = image
         }
+        
+        print(wallpaperImage?.likes)
     }
     
     // Objc functions

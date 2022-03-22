@@ -21,14 +21,13 @@ class MenuViewController: UIViewController {
     enum MenuOptions: String, CaseIterable {
         case termsOfUse = "Terms of use"
         case popular = "Popular wallpaper"
-        case art = "Art art"
+        case art = "Art art+wallpaper"
         case white = "White white"
         case cities = "Cities cities"
-        case women = "Women women"
-        case food = "Food food"
+        case food = "Food food+wallpaper"
         case animals = "Animals animals"
-        case winter = "Winter winter"
-        case space = "Space space"
+        case space = "Space universe"
+        
         case summer = "Summer summer"
         case love = "Love love"
         case macro = "Macro macro"

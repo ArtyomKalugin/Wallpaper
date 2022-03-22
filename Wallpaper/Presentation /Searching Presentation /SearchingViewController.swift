@@ -197,16 +197,14 @@ extension SearchingViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        DispatchQueue.main.async { [weak self] in
-            collectionView.deselectItem(at: indexPath, animated: true)
-            
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
-            viewController.modalPresentationStyle = .fullScreen
-            viewController.wallpaperImage = self?.images[indexPath.row]
-            
-            self?.present(viewController, animated: true, completion: nil)
-        }
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.wallpaperImage = images[indexPath.row]
+        
+        present(viewController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

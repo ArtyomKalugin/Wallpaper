@@ -52,7 +52,7 @@ class MainScreenViewController: UIViewController {
     }
     
     // Private functions
-    private func makeRequest(request: String) {
+    private func makeRequest(request: String, perPage: Int = 18) {
         images = []
         
         DispatchQueue.main.async { [weak self] in
@@ -60,7 +60,7 @@ class MainScreenViewController: UIViewController {
         }
         
         searchingImage = StringHelper.convertToAPIString(string: request)
-        loadImages()
+        loadImages(perPage: perPage)
     }
     
     private func congirureGestureRecognizer() {
@@ -89,7 +89,7 @@ class MainScreenViewController: UIViewController {
         return footerView
     }
     
-    private func loadImages() {
+    private func loadImages(perPage: Int) {
     
         DispatchQueue.main.async {
             self.spinner.removeFromSuperview()
@@ -97,8 +97,8 @@ class MainScreenViewController: UIViewController {
             self.view.addSubview(self.spinner)
         }
         
-        networkService.loadImages(searchingImage: searchingImage, page: page) { [weak self] response, error in
-            
+        networkService.loadImages(searchingImage: searchingImage, page: page, perPage: perPage) { [weak self] response, error in
+
             if let response = response {
                 
                 if response.hits.count != 0 {
@@ -107,7 +107,12 @@ class MainScreenViewController: UIViewController {
                         guard let wallpaperImage: WallpaperImage = (self?.converter.convertToImage(hit: hit)) else {
                             continue
                         }
-                        self?.images.append(wallpaperImage)
+                        
+                        if wallpaperImage.likes > 10 {
+                            self?.images.append(wallpaperImage)
+                        }
+                        
+//                        self?.images.append(wallpaperImage)
                     }
                     
                     DispatchQueue.main.async {
@@ -118,6 +123,7 @@ class MainScreenViewController: UIViewController {
                     self?.isLoading = false
         
                 } else {
+                    
                     DispatchQueue.main.async {
                         self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
 
@@ -199,16 +205,14 @@ extension MainScreenViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        DispatchQueue.main.async { [weak self] in
-            collectionView.deselectItem(at: indexPath, animated: true)
-            
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
-            viewController.modalPresentationStyle = .fullScreen
-            viewController.wallpaperImage = self?.images[indexPath.row]
-            
-            self?.present(viewController, animated: true, completion: nil)
-        }
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.wallpaperImage = images[indexPath.row]
+        
+        present(viewController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -228,7 +232,7 @@ extension MainScreenViewController: UIScrollViewDelegate {
         if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 500)) && !isLoading {
             isLoading = true
             page += 1
-            loadImages()
+            loadImages(perPage: 18)
         }
     }
 }
