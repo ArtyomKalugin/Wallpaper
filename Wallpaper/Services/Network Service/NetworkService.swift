@@ -20,7 +20,7 @@ class NetworkService {
         
         let session = URLSession(configuration: self.configuration)
         
-        let urlString = self.baseUrl + self.pixabayApiKey + "&q=\(searchingImage)" + "&page=\(page)" + "&per_page=\(perPage)" + "&min_width=750" + "&min_height=1334" + "&safesearch=true"
+        let urlString = self.baseUrl + self.pixabayApiKey + "&q=\(searchingImage)" + "&page=\(page)" + "&per_page=\(perPage)" + "&min_width=750" + "&min_height=1334" + "&safesearch=true" + "&editors_choice=true"
         
         if let urlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let imageURL = URL(string: urlString) {
             

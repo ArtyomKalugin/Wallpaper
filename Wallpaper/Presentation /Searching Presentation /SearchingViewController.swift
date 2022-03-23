@@ -83,7 +83,7 @@ class SearchingViewController: UIViewController {
         networkService.loadImages(searchingImage: searchingImage!, page: page) { [weak self] response, error in
             
             if let response = response {
-                
+               
                 if response.hits.count != 0 {
                     
                     for hit in response.hits {

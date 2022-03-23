@@ -98,7 +98,7 @@ class MainScreenViewController: UIViewController {
         }
         
         networkService.loadImages(searchingImage: searchingImage, page: page, perPage: perPage) { [weak self] response, error in
-
+     
             if let response = response {
                 
                 if response.hits.count != 0 {
@@ -108,42 +108,37 @@ class MainScreenViewController: UIViewController {
                             continue
                         }
                         
-                        if wallpaperImage.likes > 10 {
+                        if wallpaperImage.likes > 20 {
                             self?.images.append(wallpaperImage)
                         }
                         
 //                        self?.images.append(wallpaperImage)
                     }
-                    
-                    DispatchQueue.main.async {
-                        self?.collectionView.reloadData()
-                        self?.spinner.removeFromSuperview()
-                    }
-                
-                    self?.isLoading = false
-        
-                } else {
-                    
-                    DispatchQueue.main.async {
-                        self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
-
-                        self?.spinner.removeFromSuperview()
-                    }
                 }
                 
-            } else {
+            }
+            
+            if error != nil {
                 DispatchQueue.main.async {
                     self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
                     
                     self?.spinner.removeFromSuperview()
                 }
             }
+            
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+                self?.spinner.removeFromSuperview()
+            }
+        
+            self?.isLoading = false
         }
     }
     
     // Public functions
     public func changeCategory(category: String, russianCategory: String) {
         categoryLabel.text = russianCategory
+        page = 1
         spinner.removeFromSuperview()
         makeRequest(request: category)
     }
