@@ -108,11 +108,7 @@ class MainScreenViewController: UIViewController {
                             continue
                         }
                         
-                        if wallpaperImage.likes > 20 {
-                            self?.images.append(wallpaperImage)
-                        }
-                        
-//                        self?.images.append(wallpaperImage)
+                        self?.images.append(wallpaperImage)
                     }
                 }
                 
@@ -199,7 +195,7 @@ extension MainScreenViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

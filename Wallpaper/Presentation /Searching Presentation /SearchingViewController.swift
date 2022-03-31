@@ -26,14 +26,17 @@ class SearchingViewController: UIViewController {
     private var searchingImage: String?
     private var isLoading = false
     private var spinner = UIView()
+    private var recognizer: UITapGestureRecognizer!
     
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureCollectionView()
+        
+        recognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         configureKeyboard()
         configureShift()
+        configureCollectionView()
     }
     
     deinit {
@@ -53,10 +56,15 @@ class SearchingViewController: UIViewController {
     }
     
     private func configureShift() {
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        self.view.addGestureRecognizer(recognizer)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func deleteObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func configureKeyboard() {
@@ -65,50 +73,39 @@ class SearchingViewController: UIViewController {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                             target: self,
                                             action: nil)
-        let searchButton = UIBarButtonItem(title: "Найти", style: .done, target: self, action: #selector(didTapSearch))
+        let searchButton = UIBarButtonItem(title: "Search", style: .done, target: self, action: #selector(didTapSearch))
         toolBar.items = [flexibleSpace, searchButton]
         toolBar.sizeToFit()
         
         searchingTextField.inputAccessoryView = toolBar
     }
     
-    private func loadImages() {
-        spinner.removeFromSuperview()
-        spinner = createSpinnerFooter()
+    private func loadImages(perPage: Int) {
         
         DispatchQueue.main.async {
+            self.spinner.removeFromSuperview()
+            self.spinner = self.createSpinnerFooter()
             self.view.addSubview(self.spinner)
         }
         
-        networkService.loadImages(searchingImage: searchingImage!, page: page) { [weak self] response, error in
-            
+        networkService.loadImages(searchingImage: searchingImage ?? "wallpaper", page: page, perPage: perPage) { [weak self] response, error in
+     
             if let response = response {
-               
+                
                 if response.hits.count != 0 {
                     
                     for hit in response.hits {
                         guard let wallpaperImage: WallpaperImage = (self?.converter.convertToImage(hit: hit)) else {
                             continue
                         }
-                        self?.images.append(wallpaperImage)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self?.collectionView.reloadData()
-                        self?.spinner.removeFromSuperview()
-                    }
-                
-                    self?.isLoading = false
-        
-                } else {
-                    DispatchQueue.main.async {
-                        self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
                         
-                        self?.spinner.removeFromSuperview()
+                        self?.images.append(wallpaperImage)
                     }
                 }
                 
-            } else {
+            }
+            
+            if error != nil {
                 DispatchQueue.main.async {
                     self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
                     
@@ -116,6 +113,12 @@ class SearchingViewController: UIViewController {
                 }
             }
             
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+                self?.spinner.removeFromSuperview()
+            }
+        
+            self?.isLoading = false
         }
     }
     
@@ -137,6 +140,8 @@ class SearchingViewController: UIViewController {
     @objc private func keyboardWillAppear(notification: NSNotification) {
         if let _ = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             
+            self.view.addGestureRecognizer(recognizer)
+            
             if numberOfNotifications < 1 {
                 UIView.animate(withDuration: 0.1, animations: {
                     self.searchLabel.alpha = 0
@@ -153,6 +158,8 @@ class SearchingViewController: UIViewController {
     }
     
     @objc private func keyboardWillDisappear() {
+        self.view.removeGestureRecognizer(recognizer)
+        
         UIView.animate(withDuration: 0.1, animations: {
             self.searchLabel.alpha = 1
             self.backButton.alpha = 1
@@ -164,6 +171,8 @@ class SearchingViewController: UIViewController {
     }
     
     @objc private func didTapSearch() {
+        searchingTextField.resignFirstResponder()
+        deleteObservers()
         images = []
         
         DispatchQueue.main.async { [weak self] in
@@ -175,8 +184,7 @@ class SearchingViewController: UIViewController {
         }
         
         searchingImage = StringHelper.convertToAPIString(string: searchingText)
-        loadImages()
-        searchingTextField.resignFirstResponder()
+        loadImages(perPage: 18)
     }
 }
 
@@ -224,7 +232,7 @@ extension SearchingViewController: UIScrollViewDelegate {
         if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 500)) && !isLoading {
             isLoading = true
             page += 1
-            loadImages()
+            loadImages(perPage: 18)
         }
     }
 }
