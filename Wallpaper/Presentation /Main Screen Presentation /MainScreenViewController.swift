@@ -46,7 +46,8 @@ class MainScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
+        configureView()
         configureCollectionView()
         congirureGestureRecognizer()
     }
@@ -61,6 +62,11 @@ class MainScreenViewController: UIViewController {
         
         searchingImage = StringHelper.convertToAPIString(string: request)
         loadImages(perPage: perPage)
+    }
+    
+    private func configureView() {
+        view.backgroundColor = #colorLiteral(red: 0.0539104268, green: 0.05571329594, blue: 0.07271655649, alpha: 1)
+        collectionView.backgroundColor = #colorLiteral(red: 0.06370870024, green: 0.06764560193, blue: 0.09045111388, alpha: 1)
     }
     
     private func congirureGestureRecognizer() {

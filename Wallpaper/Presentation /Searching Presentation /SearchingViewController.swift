@@ -51,6 +51,9 @@ class SearchingViewController: UIViewController {
     
     // Private functions
     private func configureCollectionView() {
+        view.backgroundColor = #colorLiteral(red: 0.06370870024, green: 0.06764560193, blue: 0.09045111388, alpha: 1)
+        searchingTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        collectionView.backgroundColor = #colorLiteral(red: 0.06370870024, green: 0.06764560193, blue: 0.09045111388, alpha: 1)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -60,11 +63,6 @@ class SearchingViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    private func deleteObservers() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func configureKeyboard() {
@@ -138,8 +136,9 @@ class SearchingViewController: UIViewController {
     }
     
     @objc private func keyboardWillAppear(notification: NSNotification) {
+    
         if let _ = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-            
+        
             self.view.addGestureRecognizer(recognizer)
             
             if numberOfNotifications < 1 {
@@ -147,6 +146,8 @@ class SearchingViewController: UIViewController {
                     self.searchLabel.alpha = 0
                     self.backButton.alpha = 0
                     self.backButton.isEnabled = false
+                    self.collectionView.backgroundColor = #colorLiteral(red: 0.0539104268, green: 0.05571329594, blue: 0.07271655649, alpha: 1)
+                    self.view.backgroundColor = #colorLiteral(red: 0.06370870024, green: 0.06764560193, blue: 0.09045111388, alpha: 1)
                 })
                 let window = UIApplication.shared.windows.first
                 let topPadding = window?.safeAreaInsets.top
@@ -164,6 +165,8 @@ class SearchingViewController: UIViewController {
             self.searchLabel.alpha = 1
             self.backButton.alpha = 1
             self.backButton.isEnabled = true
+            self.collectionView.backgroundColor = #colorLiteral(red: 0.0539104268, green: 0.05571329594, blue: 0.07271655649, alpha: 1)
+            self.view.backgroundColor = #colorLiteral(red: 0.0539104268, green: 0.05571329594, blue: 0.07271655649, alpha: 1)
         })
         
         self.view.frame.origin.y = 0
@@ -171,8 +174,8 @@ class SearchingViewController: UIViewController {
     }
     
     @objc private func didTapSearch() {
+        
         searchingTextField.resignFirstResponder()
-        deleteObservers()
         images = []
         
         DispatchQueue.main.async { [weak self] in
@@ -185,6 +188,11 @@ class SearchingViewController: UIViewController {
         
         searchingImage = StringHelper.convertToAPIString(string: searchingText)
         loadImages(perPage: 18)
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            self.collectionView.backgroundColor = #colorLiteral(red: 0.06370870024, green: 0.06764560193, blue: 0.09045111388, alpha: 1)
+            self.view.backgroundColor = #colorLiteral(red: 0.0539104268, green: 0.05571329594, blue: 0.07271655649, alpha: 1)
+        })
     }
 }
 

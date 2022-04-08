@@ -42,6 +42,14 @@ class MenuViewController: UIViewController {
         return table
     }()
     
+    private let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "background2")
+        imageView.contentMode = .scaleAspectFill
+        
+        return imageView
+    }()
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +65,14 @@ class MenuViewController: UIViewController {
     
     // Private functions 
     private func configureTableView() {
-        tableView.frame = CGRect(x: 0, y: view.safeAreaInsets.top , width: view.bounds.size.width, height: view.bounds.size.height)
+        tableView.frame = view.frame
+        tableView.backgroundColor = #colorLiteral(red: 0.05580576509, green: 0.05732079595, blue: 0.07379911095, alpha: 0.7542166805)
     }
     
     private func configure() {
-        view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        backgroundImageView.frame = view.frame
+        view.addSubview(backgroundImageView)
+        view.backgroundColor = #colorLiteral(red: 0.05580576509, green: 0.05732079595, blue: 0.07379911095, alpha: 0.7542166805)
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -89,18 +100,23 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        cell.contentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        
+        cell.backgroundColor = UIColor.clear
+        cell.contentView.backgroundColor = UIColor.clear
+        cell.backgroundView?.backgroundColor = UIColor.clear
         
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellToDeSelect:UITableViewCell = tableView.cellForRow(at: indexPath)!
-        cellToDeSelect.contentView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-            
-            cellToDeSelect.contentView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+
+            cellToDeSelect.backgroundColor = UIColor.clear
+            cellToDeSelect.contentView.backgroundColor = UIColor.clear
+            cellToDeSelect.backgroundView?.backgroundColor = UIColor.clear
+
         }, completion: nil)
         
         tableView.deselectRow(at: indexPath, animated: true)
