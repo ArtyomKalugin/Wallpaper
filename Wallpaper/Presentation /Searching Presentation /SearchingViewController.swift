@@ -78,7 +78,7 @@ class SearchingViewController: UIViewController {
         searchingTextField.inputAccessoryView = toolBar
     }
     
-    private func loadImages(perPage: Int) {
+    private func loadImages(perPage: Int, isPagination: Bool) {
         
         DispatchQueue.main.async {
             self.spinner.removeFromSuperview()
@@ -87,7 +87,7 @@ class SearchingViewController: UIViewController {
         }
         
         networkService.loadImages(searchingImage: searchingImage ?? "wallpaper", page: page, perPage: perPage) { [weak self] response, error in
-     
+    
             if let response = response {
                 
                 if response.hits.count != 0 {
@@ -101,6 +101,24 @@ class SearchingViewController: UIViewController {
                     }
                 }
                 
+                if response.hits.count == 0 && !isPagination {
+                    
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
+                        
+                        self?.spinner.removeFromSuperview()
+                    }
+                }
+                
+            }
+            
+            if response == nil && !isPagination {
+                
+                DispatchQueue.main.async {
+                    self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
+                    
+                    self?.spinner.removeFromSuperview()
+                }
             }
             
             if error != nil {
@@ -187,7 +205,7 @@ class SearchingViewController: UIViewController {
         }
         
         searchingImage = StringHelper.convertToAPIString(string: searchingText)
-        loadImages(perPage: 18)
+        loadImages(perPage: 18, isPagination: false)
         
         UIView.animate(withDuration: 0.1, animations: {
             self.collectionView.backgroundColor = #colorLiteral(red: 0.06370870024, green: 0.06764560193, blue: 0.09045111388, alpha: 1)
@@ -240,7 +258,7 @@ extension SearchingViewController: UIScrollViewDelegate {
         if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 500)) && !isLoading {
             isLoading = true
             page += 1
-            loadImages(perPage: 18)
+            loadImages(perPage: 18, isPagination: true)
         }
     }
 }

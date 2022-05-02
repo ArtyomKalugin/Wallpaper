@@ -467,7 +467,7 @@
 				DEVELOPMENT_TEAM = 258576KTZ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallpaper/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Необходимо разрешить приложению скачивать фотографии на ваше устройство!";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "You should allow the application to download photos to your device!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -498,7 +498,7 @@
 				DEVELOPMENT_TEAM = 258576KTZ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallpaper/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Необходимо разрешить приложению скачивать фотографии на ваше устройство!";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "You should allow the application to download photos to your device!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

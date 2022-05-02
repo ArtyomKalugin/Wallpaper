@@ -21,21 +21,21 @@
           "adHocOffers" : [
 
           ],
-          "displayPrice" : "2.99",
+          "displayPrice" : "4.99",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "E0D6B527",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Доступ ко всем функциям приложения на месяц ",
-              "displayName" : "Премиум на месяц ",
-              "locale" : "ru"
+              "description" : "Access to all application features for month",
+              "displayName" : "Premium for a month",
+              "locale" : "en_US"
             }
           ],
           "productID" : "wallpaper_200_1m",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Доступ ко всем функциям приложения на месяц ",
+          "referenceName" : "Access to all application features for a month",
           "subscriptionGroupID" : "46A50D0D",
           "type" : "RecurringSubscription"
         },
@@ -43,21 +43,21 @@
           "adHocOffers" : [
 
           ],
-          "displayPrice" : "9.99",
+          "displayPrice" : "15.99",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "3030A091",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Доступ ко всем функциям приложения на год",
-              "displayName" : "Премиум на год",
-              "locale" : "ru"
+              "description" : "Access to all application features for a year",
+              "displayName" : "Premium for a year ",
+              "locale" : "en_US"
             }
           ],
           "productID" : "wallpaper_1000_1y",
           "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "Доступ ко всем функциям приложения на год",
+          "referenceName" : "Access to all application features for a year",
           "subscriptionGroupID" : "46A50D0D",
           "type" : "RecurringSubscription"
         }

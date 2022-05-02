@@ -11,11 +11,13 @@ import Purchases
 class PurchaseViewController: UIViewController {
 
     // Outlet properties
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var annualContainerView: UIView!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var privacyTextView: UITextView!
+    @IBOutlet weak var backgroundView: UITextView!
     
     //Private properties
     private var condition = 0
@@ -30,13 +32,13 @@ class PurchaseViewController: UIViewController {
     // Objc functions
     @objc func handleLeftTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
         condition = 0
-        annualContainerView.layer.borderColor = #colorLiteral(red: 0.2816390693, green: 0.3066759408, blue: 0.3362169862, alpha: 1)
+        annualContainerView.layer.borderColor = #colorLiteral(red: 0.2816390693, green: 0.3066759408, blue: 0.3362169862, alpha: 0)
         containerView.layer.borderColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
     }
     
     @objc func handleRightTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
         condition = 1
-        containerView.layer.borderColor = #colorLiteral(red: 0.2816390693, green: 0.3066759408, blue: 0.3362169862, alpha: 1)
+        containerView.layer.borderColor = #colorLiteral(red: 0.2816390693, green: 0.3066759408, blue: 0.3362169862, alpha: 0)
         annualContainerView.layer.borderColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
     }
 
@@ -57,6 +59,8 @@ class PurchaseViewController: UIViewController {
 
     // Private functions
     private func configure() {
+        backgroundView.backgroundColor = #colorLiteral(red: 0.05580576509, green: 0.05732079595, blue: 0.07379911095, alpha: 0.7542166805)
+        
         let leftRecognizer = UITapGestureRecognizer()
         leftRecognizer.addTarget(self, action: #selector(handleLeftTapGesture(_:)))
         containerView.addGestureRecognizer(leftRecognizer)
@@ -73,7 +77,7 @@ class PurchaseViewController: UIViewController {
         annualContainerView.layer.cornerRadius = 15
         annualContainerView.clipsToBounds = true
         annualContainerView.layer.borderWidth = 3.0
-        annualContainerView.layer.borderColor = #colorLiteral(red: 0.2816390693, green: 0.3066759408, blue: 0.3362169862, alpha: 1)
+        annualContainerView.layer.borderColor = #colorLiteral(red: 0.2816390693, green: 0.3066759408, blue: 0.3362169862, alpha: 0)
         
         buyButton.layer.cornerRadius = 10
         buyButton.clipsToBounds = true
@@ -83,14 +87,16 @@ class PurchaseViewController: UIViewController {
         
         let attributedString = NSMutableAttributedString(string: "Privacy policy")
         let url = URL(string: "https://docs.google.com/document/d/1jpApSDJ9pONmiOO2zAQKF5mwo5hZpG6U-80sQatP_T4/edit?usp=sharing")!
-        attributedString.setAttributes([.link: url], range: NSMakeRange(0, attributedString.length))
+        attributedString.setAttributes([.link: url, .font: UIFont(name: "Helvetica Neue", size: 18.0)], range: NSMakeRange(0, attributedString.length))
         privacyTextView.attributedText = attributedString
         privacyTextView.isUserInteractionEnabled = true
         privacyTextView.isEditable = false
         privacyTextView.linkTextAttributes = [
-            .foregroundColor: UIColor.blue,
+            .foregroundColor: UIColor.systemBlue,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
+        privacyTextView.textAlignment = .center
+        privacyTextView.backgroundColor = #colorLiteral(red: 0.05580576509, green: 0.05732079595, blue: 0.07379911095, alpha: 0)
     }
 
     private func restorePurchase() {

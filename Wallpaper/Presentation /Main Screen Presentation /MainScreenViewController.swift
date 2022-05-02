@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Purchases
 
 // MARK: - MainScreenViewControllerDelegate
 protocol MainScreenViewControllerDelegate: AnyObject {
@@ -34,13 +35,22 @@ class MainScreenViewController: UIViewController {
     private var searchingImage = "wallpaper"
     private var isLoading = false
     private var spinner = UIView()
+    private var isSubscriptionAppeared = false
     
     // MARK: - View life cycle
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         if images.isEmpty {
             makeRequest(request: searchingImage)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !isSubscriptionAppeared {
+            checkSubscription()
         }
     }
     
@@ -53,6 +63,25 @@ class MainScreenViewController: UIViewController {
     }
     
     // Private functions
+    private func checkSubscription() {
+        
+        isSubscriptionAppeared = true
+        
+        Purchases.shared.purchaserInfo { info, error in
+            guard let info = info, error == nil else { return }
+
+            if info.entitlements["allaccess"]?.isActive == true {
+                return
+            } else {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let viewController = storyboard.instantiateViewController(withIdentifier:  "PurchaseViewController") as? PurchaseViewController else { return }
+                viewController.modalPresentationStyle = .fullScreen
+
+                self.present(viewController, animated: true, completion: nil)
+            }
+        }
+    }
+    
     private func makeRequest(request: String, perPage: Int = 18) {
         images = []
         
@@ -61,7 +90,7 @@ class MainScreenViewController: UIViewController {
         }
         
         searchingImage = StringHelper.convertToAPIString(string: request)
-        loadImages(perPage: perPage)
+        loadImages(perPage: perPage, isPagination: false)
     }
     
     private func configureView() {
@@ -95,7 +124,7 @@ class MainScreenViewController: UIViewController {
         return footerView
     }
     
-    private func loadImages(perPage: Int) {
+    private func loadImages(perPage: Int, isPagination: Bool) {
     
         DispatchQueue.main.async {
             self.spinner.removeFromSuperview()
@@ -118,6 +147,24 @@ class MainScreenViewController: UIViewController {
                     }
                 }
                 
+                if response.hits.count == 0 && !isPagination {
+                    
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
+                        
+                        self?.spinner.removeFromSuperview()
+                    }
+                }
+                
+            }
+            
+            if response == nil && !isPagination {
+                
+                DispatchQueue.main.async {
+                    self?.showAlert(title: NSLocalizedString("Error", comment: ""), body: NSLocalizedString("No results were found for your request!", comment: ""), button: "ОК", actions: nil)
+                    
+                    self?.spinner.removeFromSuperview()
+                }
             }
             
             if error != nil {
@@ -229,7 +276,7 @@ extension MainScreenViewController: UIScrollViewDelegate {
         if (position > (scrollView.contentSize.height - scrollView.frame.size.height - 500)) && !isLoading {
             isLoading = true
             page += 1
-            loadImages(perPage: 18)
+            loadImages(perPage: 18, isPagination: true)
         }
     }
 }
