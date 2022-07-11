@@ -13,6 +13,8 @@ class DetailImageViewController: UIViewController {
     // Outlet properties
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var backgroundBackButton: UIView!
+    @IBOutlet weak var backgroundDownloadButton: UIView!
     
     // Public properties
     public var wallpaperImage: WallpaperImage?
@@ -21,7 +23,8 @@ class DetailImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configure()
+        configureAppearance()
+//        configure()
     }
     
     // MARK: - Button actions
@@ -49,12 +52,6 @@ class DetailImageViewController: UIViewController {
                 self.present(viewController, animated: true, completion: nil)
             }
         }
-        
-//        if let image = imageView.image {
-//            UIImageWriteToSavedPhotosAlbum(image, self, #selector(savingCompleted(image:error:contextInfo:)), nil)
-//        } else {
-//            downloadButton.isEnabled = false
-//        }
     }
     
     // Private functions
@@ -65,8 +62,14 @@ class DetailImageViewController: UIViewController {
             let image = UIImage(data: data)
             imageView.image = image
         }
+    }
+    
+    private func configureAppearance() {        
+        backgroundBackButton.layer.cornerRadius = backgroundBackButton.frame.size.height / 2
+        backgroundBackButton.clipsToBounds = true
         
-        print(wallpaperImage?.likes)
+        backgroundDownloadButton.layer.cornerRadius = backgroundDownloadButton.frame.size.height / 2
+        backgroundDownloadButton.clipsToBounds = true
     }
     
     // Objc functions

@@ -15,7 +15,6 @@ class PurchaseViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var annualContainerView: UIView!
     @IBOutlet weak var buyButton: UIButton!
-    @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var privacyTextView: UITextView!
     @IBOutlet weak var backgroundView: UITextView!
     
@@ -53,10 +52,6 @@ class PurchaseViewController: UIViewController {
         }
     }
 
-    @IBAction func resctoreButtonAction(_ sender: Any) {
-        restorePurchase()
-    }
-
     // Private functions
     private func configure() {
         backgroundView.backgroundColor = #colorLiteral(red: 0.05580576509, green: 0.05732079595, blue: 0.07379911095, alpha: 0.7542166805)
@@ -81,9 +76,6 @@ class PurchaseViewController: UIViewController {
         
         buyButton.layer.cornerRadius = 10
         buyButton.clipsToBounds = true
-
-        restoreButton.layer.cornerRadius = 10
-        restoreButton.clipsToBounds = true
         
         let attributedString = NSMutableAttributedString(string: "Privacy policy")
         let url = URL(string: "https://docs.google.com/document/d/1jpApSDJ9pONmiOO2zAQKF5mwo5hZpG6U-80sQatP_T4/edit?usp=sharing")!
@@ -97,17 +89,6 @@ class PurchaseViewController: UIViewController {
         ]
         privacyTextView.textAlignment = .center
         privacyTextView.backgroundColor = #colorLiteral(red: 0.05580576509, green: 0.05732079595, blue: 0.07379911095, alpha: 0)
-    }
-
-    private func restorePurchase() {
-        Purchases.shared.restoreTransactions { [weak self] info, error in
-
-            guard let info = info, error == nil else {
-                return
-            }
-            print(info)
-            self?.dismiss(animated: true, completion: nil)
-        }
     }
 
     private func fetchPackages(completion: @escaping (Purchases.Package) -> Void) {

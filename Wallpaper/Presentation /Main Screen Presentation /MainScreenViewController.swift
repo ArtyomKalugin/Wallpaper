@@ -49,9 +49,15 @@ class MainScreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !isSubscriptionAppeared {
-            checkSubscription()
-        }
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        
+        present(viewController, animated: true, completion: nil)
+        
+//        if !isSubscriptionAppeared {
+//            checkSubscription()
+//        }
     }
     
     override func viewDidLoad() {
@@ -226,7 +232,6 @@ class MainScreenViewController: UIViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier:  "SearchingViewController") as? SearchingViewController else { return }
-        viewController.modalPresentationStyle = .fullScreen
         
         present(viewController, animated: true, completion: nil)
     }
