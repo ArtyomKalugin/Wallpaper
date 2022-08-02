@@ -24,7 +24,7 @@ class DetailImageViewController: UIViewController {
         super.viewDidLoad()
         
         configureAppearance()
-//        configure()
+        configure()
     }
     
     // MARK: - Button actions

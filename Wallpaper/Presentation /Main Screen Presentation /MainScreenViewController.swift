@@ -49,15 +49,10 @@ class MainScreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let viewController = storyboard.instantiateViewController(withIdentifier:  "DetailImageViewController") as? DetailImageViewController else { return }
-        viewController.modalPresentationStyle = .fullScreen
-        
-        present(viewController, animated: true, completion: nil)
-        
-//        if !isSubscriptionAppeared {
-//            checkSubscription()
-//        }
+        if !isSubscriptionAppeared {
+            checkSubscription()
+            isSubscriptionAppeared = true
+        }
     }
     
     override func viewDidLoad() {
@@ -70,9 +65,6 @@ class MainScreenViewController: UIViewController {
     
     // Private functions
     private func checkSubscription() {
-        
-        isSubscriptionAppeared = true
-        
         Purchases.shared.purchaserInfo { info, error in
             guard let info = info, error == nil else { return }
 
